@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dku4duhlsp7o0"]
+[gd_scene load_steps=6 format=3 uid="uid://dku4duhlsp7o0"]
 
 [ext_resource type="Script" uid="uid://df2ak3fftj0ug" path="res://Scripts/playerMovement.gd" id="1_4o3m0"]
 [ext_resource type="Texture2D" uid="uid://cfqyfegc3anyj" path="res://icon.svg" id="1_mlmyi"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlmyi"]
 size = Vector2(126, 116)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77ygc"]
+size = Vector2(128, 127)
 
 [node name="p1_player_body" type="CharacterBody2D"]
 collision_layer = 4
@@ -19,3 +22,9 @@ shape = SubResource("RectangleShape2D_mlmyi")
 [node name="playerBody_Sprite" type="Sprite2D" parent="."]
 self_modulate = Color(0, 1, 0.216667, 1)
 texture = ExtResource("1_mlmyi")
+
+[node name="water_colission" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water_colission"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_77ygc")

@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=4 uid="uid://h1dajbdmhnkh"]
+
+[ext_resource type="TileSet" uid="uid://blagjdbr7tfvs" path="res://Asset/tileSet/SeaTestTileSet.tres" id="1_pr8gx"]
+[ext_resource type="PackedScene" uid="uid://dku4duhlsp7o0" path="res://Prefab/Player1.tscn" id="2_nitmc"]
+[ext_resource type="PackedScene" uid="uid://dw5wft6rfnxan" path="res://Prefab/Player2.tscn" id="3_m16d8"]
+[ext_resource type="PackedScene" uid="uid://bt16dq5ib2ilc" path="res://Level/water_body.tscn" id="4_nitmc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qn4jw"]
+distance = -149.0
+
+[node name="Test" type="Node2D"]
+metadata/Level_Type = "TopDown"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, 149)
+tile_map_data = PackedByteArray("AAD//wAAAAACAAAAAAAAAAAAAAACAAEAAAABAAAAAAACAAEAAAACAAAAAAACAAEAAAADAAAAAAACAAEAAAAEAAAAAAACAAEAAAAFAAAAAAACAAEAAAAGAAAAAAACAAEAAAAHAAAAAAACAAEAAAABAP//AAAEAAQAAAAFAP//AAAEAAQAAAADAP//AAAEAAMAAAACAP//AAADAAQAAAAEAP//AAAEAAMAAAAHAP//AAAEAAMAAAD//wEAAAAAAAMAAAAAAAEAAAAAAAMAAAABAAEAAAAAAAMAAAACAAEAAAAAAAMAAAADAAEAAAAAAAMAAAAEAAEAAAAAAAMAAAAFAAEAAAAAAAMAAAAGAAEAAAAAAAMAAAAHAAEAAAAAAAMAAAA=")
+tile_set = ExtResource("1_pr8gx")
+
+[node name="p1_player_body" parent="." instance=ExtResource("2_nitmc")]
+
+[node name="p2_player_body" parent="." instance=ExtResource("3_m16d8")]
+position = Vector2(187, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_qn4jw")
+
+[node name="water_body" parent="." instance=ExtResource("4_nitmc")]
+position = Vector2(535, 81)
+spring_number = 32
