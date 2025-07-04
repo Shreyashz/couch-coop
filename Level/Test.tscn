@@ -15,10 +15,12 @@ position = Vector2(0, 149)
 tile_map_data = PackedByteArray("AAD//wAAAAACAAAAAAAAAAAAAAACAAEAAAABAAAAAAACAAEAAAACAAAAAAACAAEAAAADAAAAAAACAAEAAAAEAAAAAAACAAEAAAAFAAAAAAACAAEAAAAGAAAAAAACAAEAAAAHAAAAAAACAAEAAAABAP//AAAEAAQAAAAFAP//AAAEAAQAAAADAP//AAAEAAMAAAACAP//AAADAAQAAAAEAP//AAAEAAMAAAAHAP//AAAEAAMAAAD//wEAAAAAAAMAAAAAAAEAAAAAAAMAAAABAAEAAAAAAAMAAAACAAEAAAAAAAMAAAADAAEAAAAAAAMAAAAEAAEAAAAAAAMAAAAFAAEAAAAAAAMAAAAGAAEAAAAAAAMAAAAHAAEAAAAAAAMAAAA=")
 tile_set = ExtResource("3_2lno3")
 
-[node name="p1_player_body" parent="." instance=ExtResource("1_u4hcw")]
+[node name="p1_player_body" parent="." node_paths=PackedStringArray("curr_scene") instance=ExtResource("1_u4hcw")]
+curr_scene = NodePath("..")
 
-[node name="p2_player_body" parent="." instance=ExtResource("2_qn4jw")]
+[node name="p2_player_body" parent="." node_paths=PackedStringArray("curr_scene") instance=ExtResource("2_qn4jw")]
 position = Vector2(187, 0)
+curr_scene = NodePath("..")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_mask = 4
