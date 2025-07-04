@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=4 uid="uid://ndgo1e0olpi"]
+
+[ext_resource type="PackedScene" uid="uid://dku4duhlsp7o0" path="res://Prefab/Player1.tscn" id="1_u4hcw"]
+[ext_resource type="PackedScene" uid="uid://dw5wft6rfnxan" path="res://Prefab/Player2.tscn" id="2_qn4jw"]
+[ext_resource type="TileSet" uid="uid://blagjdbr7tfvs" path="res://Asset/tileSet/SeaTestTileSet.tres" id="3_2lno3"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qn4jw"]
+distance = -149.0
+
+[node name="Test" type="Node2D"]
+metadata/Level_Type = "TopDown"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, 149)
+tile_map_data = PackedByteArray("AAD//wAAAAACAAAAAAAAAAAAAAACAAEAAAABAAAAAAACAAEAAAACAAAAAAACAAEAAAADAAAAAAACAAEAAAAEAAAAAAACAAEAAAAFAAAAAAACAAEAAAAGAAAAAAACAAEAAAAHAAAAAAACAAEAAAABAP//AAAEAAQAAAAFAP//AAAEAAQAAAADAP//AAAEAAMAAAACAP//AAADAAQAAAAEAP//AAAEAAMAAAAHAP//AAAEAAMAAAD//wEAAAAAAAMAAAAAAAEAAAAAAAMAAAABAAEAAAAAAAMAAAACAAEAAAAAAAMAAAADAAEAAAAAAAMAAAAEAAEAAAAAAAMAAAAFAAEAAAAAAAMAAAAGAAEAAAAAAAMAAAAHAAEAAAAAAAMAAAA=")
+tile_set = ExtResource("3_2lno3")
+
+[node name="p1_player_body" parent="." instance=ExtResource("1_u4hcw")]
+
+[node name="p2_player_body" parent="." instance=ExtResource("2_qn4jw")]
+position = Vector2(187, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_qn4jw")
