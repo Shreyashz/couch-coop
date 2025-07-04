@@ -1,21 +1,70 @@
-[gd_scene load_steps=5 format=3 uid="uid://dku4duhlsp7o0"]
+[gd_scene load_steps=8 format=3 uid="uid://dku4duhlsp7o0"]
 
 [ext_resource type="Script" uid="uid://df2ak3fftj0ug" path="res://Scripts/playerMovement.gd" id="1_4o3m0"]
-[ext_resource type="Texture2D" uid="uid://cfqyfegc3anyj" path="res://icon.svg" id="1_mlmyi"]
 [ext_resource type="Resource" uid="uid://8g05ye4w781h" path="res://Resources/p1_player_control.tres" id="2_77ygc"]
+[ext_resource type="Texture2D" uid="uid://5t3fuj5p4pdq" path="res://Asset/CharacterSheet/platformerPenguinsInOne.png" id="3_fun7e"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlmyi"]
-size = Vector2(126, 116)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_77ygc"]
+radius = 28.0
+height = 116.0
 
-[node name="p1_player_body" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_n820l"]
+resource_name = "penguinWalk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("playerBody_Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33, 0.66, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 388, 534), Rect2(388, 0, 388, 534), Rect2(776, 0, 388, 534), Rect2(1164, 0, 388, 534)]
+}
+
+[sub_resource type="Animation" id="Animation_77ygc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("playerBody_Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 388, 534)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ndn3r"]
+_data = {
+&"RESET": SubResource("Animation_77ygc"),
+&"penguinWalk": SubResource("Animation_n820l")
+}
+
+[node name="p1_player_body" type="CharacterBody2D" node_paths=PackedStringArray("spriteControl")]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_4o3m0")
 controls = ExtResource("2_77ygc")
+spriteControl = NodePath("playerBody_Sprite")
+metadata/playerIndex = 0
 
 [node name="playerBody_Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_mlmyi")
+shape = SubResource("CapsuleShape2D_77ygc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ndn3r")
+}
+autoplay = "penguinWalk"
 
 [node name="playerBody_Sprite" type="Sprite2D" parent="."]
-self_modulate = Color(0, 1, 0.216667, 1)
-texture = ExtResource("1_mlmyi")
+position = Vector2(4.20499, -10)
+scale = Vector2(0.297912, 0.29684)
+texture = ExtResource("3_fun7e")
+region_enabled = true
+region_rect = Rect2(0, 0, 388, 534)
