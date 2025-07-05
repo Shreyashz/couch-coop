@@ -4,6 +4,7 @@ var spacing = 0
 var left = []
 var right= []
 var k = 0.015
+@onready var water_colision: CollisionPolygon2D = $Area2D/water_colision
 var dampening = 0.03
 @onready var water: Polygon2D = $water
 @onready var spring_Scene = preload("res://Level/water_spring.tscn")
@@ -16,7 +17,7 @@ func _ready() -> void:
 		self.add_child(child)
 		spacing += 15
 	for i in get_children():
-		if(i != water):
+		if(i != water && i!=water_colision && !i is Area2D):
 			springs.append(i)
 			i.initialize()
 	for i in range(springs.size()):
@@ -40,6 +41,7 @@ func _physics_process(delta: float) -> void:
 func splash(i, speed):
 	springs[i].velocity +=speed
 	
+	
 func draw_water():
 	var points = []
 	for i in range(springs.size()):
@@ -53,7 +55,15 @@ func draw_water():
 	for i in range(points.size() - 1, -1, -1):
 		var p = points[i]
 		water_points.append(Vector2(p.x, p.y + 600))
+	water_colision.polygon = water_points
 
 	water_points = PackedVector2Array(water_points)
 	water.polygon = water_points
-	
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if(area.get_parent() is CharacterBody2D):
+		area.get_parent().swimming = true
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if(area.get_parent() is CharacterBody2D):
+		area.get_parent().swimming = false

@@ -28,5 +28,5 @@ collision_mask = 4
 shape = SubResource("WorldBoundaryShape2D_qn4jw")
 
 [node name="water_body" parent="." instance=ExtResource("4_nitmc")]
-position = Vector2(535, 81)
-spring_number = 32
+position = Vector2(503, -430)
+spring_number = 100
