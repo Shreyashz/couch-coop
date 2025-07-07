@@ -15,7 +15,7 @@ func _ready() -> void:
 		var child = spring_Scene.instantiate()
 		child.position = Vector2(spacing, 0)
 		self.add_child(child)
-		spacing += 15
+		spacing += 40
 	for i in get_children():
 		if(i != water && i!=water_colision && !i is Area2D):
 			springs.append(i)

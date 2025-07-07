@@ -8,7 +8,6 @@ var pa_abajo = false
 const SPEED = 300.0
 var JUMP_VELOCITY = -400.0
 func ready() -> void:
-	print(curr_scene.name)
 	if has_meta("player_index"):
 		match curr_scene.get_meta("player_index"):
 			0:
