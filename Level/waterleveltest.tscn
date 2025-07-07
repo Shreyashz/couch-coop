@@ -14,13 +14,14 @@ tile_map_data = PackedByteArray("AAD//wAAAAACAAAAAAAAAAAAAAACAAEAAAABAAAAAAACAAE
 tile_set = ExtResource("1_pr8gx")
 
 [node name="p1_player_body" parent="." instance=ExtResource("2_nitmc")]
+position = Vector2(24, -162)
 collision_layer = 5
 
 [node name="p2_player_body" parent="." instance=ExtResource("3_m16d8")]
 texture_filter = 1
-position = Vector2(187, 0)
+position = Vector2(295, -94)
 collision_layer = 5
 
 [node name="water_body" parent="." instance=ExtResource("4_nitmc")]
-position = Vector2(-1595, 920)
+position = Vector2(-545, -272)
 spring_number = 100

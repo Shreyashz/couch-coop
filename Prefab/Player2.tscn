@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dw5wft6rfnxan"]
+[gd_scene load_steps=9 format=3 uid="uid://dw5wft6rfnxan"]
 
 [ext_resource type="Script" uid="uid://df2ak3fftj0ug" path="res://Scripts/playerMovement.gd" id="1_x7emr"]
 [ext_resource type="Resource" uid="uid://xu07y7nnc2mh" path="res://Resources/p2_player_control.tres" id="2_iuxfw"]
@@ -46,7 +46,12 @@ _data = {
 &"penguinWalk": SubResource("Animation_n820l")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iuxfw"]
+radius = 26.6667
+height = 68.0
+
 [node name="p2_player_body" type="CharacterBody2D" node_paths=PackedStringArray("spriteControl")]
+scale = Vector2(1.5, 1.5)
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_x7emr")
@@ -71,3 +76,9 @@ texture = ExtResource("3_cah3m")
 hframes = 7
 vframes = 7
 region_rect = Rect2(0, 0, 388, 534)
+
+[node name="water_colission" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water_colission"]
+position = Vector2(0, 14.6667)
+shape = SubResource("CapsuleShape2D_iuxfw")
