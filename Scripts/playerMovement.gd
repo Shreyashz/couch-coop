@@ -6,7 +6,7 @@ var swimming = false
 var pa_abajo = false
 
 const SPEED = 300.0
-var JUMP_VELOCITY = -400.0
+var JUMP_VELOCITY = -500.0
 func ready() -> void:
 	if has_meta("player_index"):
 		match curr_scene.get_meta("player_index"):
