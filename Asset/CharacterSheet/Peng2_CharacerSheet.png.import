@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5t3fuj5p4pdq"
-path="res://.godot/imported/platformerPenguinsInOne.png-b0a6a0673276129f39def8e2da9aa1ab.ctex"
+uid="uid://dgfu4f3kixt0d"
+path="res://.godot/imported/Peng2_CharacerSheet.png-6473b496bcbef13feeb635f92d95de0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/CharacterSheet/platformerPenguinsInOne.png"
-dest_files=["res://.godot/imported/platformerPenguinsInOne.png-b0a6a0673276129f39def8e2da9aa1ab.ctex"]
+source_file="res://Asset/CharacterSheet/Peng2_CharacerSheet.png"
+dest_files=["res://.godot/imported/Peng2_CharacerSheet.png-6473b496bcbef13feeb635f92d95de0a.ctex"]
 
 [params]
 
