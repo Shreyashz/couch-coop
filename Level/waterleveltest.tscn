@@ -17,6 +17,7 @@ tile_set = ExtResource("1_pr8gx")
 collision_layer = 5
 
 [node name="p2_player_body" parent="." instance=ExtResource("3_m16d8")]
+texture_filter = 1
 position = Vector2(187, 0)
 collision_layer = 5
 
