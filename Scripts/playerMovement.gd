@@ -5,7 +5,7 @@ var swimming = false
 @export var spriteControl:Sprite2D = null
 var pa_abajo = false
 
-const SPEED = 300.0
+const SPEED = 400.0
 var JUMP_VELOCITY = -500.0
 func ready() -> void:
 	if has_meta("player_index"):

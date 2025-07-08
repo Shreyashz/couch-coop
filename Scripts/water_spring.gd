@@ -3,7 +3,7 @@ var velocity = 0
 var force = 0
 var height = position.y
 var target_height = position.y
-
+@onready var area_2d: Area2D = $Area2D
 func initialize():
 	height = position.y
 	target_height = position.y
@@ -24,3 +24,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if(area.get_parent() is CharacterBody2D):
 		if(self in self.get_parent().springs):
 			get_parent().splash(get_parent().springs.find(self), 4)
+
+func optimize(active: bool) -> void:
+	area_2d.monitoring = active
+	area_2d.set_deferred("monitorable", active)
+	self.visible = active

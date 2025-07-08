@@ -4,8 +4,10 @@ var spacing = 0
 var left = []
 var right= []
 var k = 0.015
+@export var camera1 :Camera2D
+@export var camera2 :Camera2D
 @onready var water_colision: CollisionPolygon2D = $Area2D/water_colision
-var dampening = 0.03
+var dampening = 0.02
 @onready var water: Polygon2D = $water
 @onready var spring_Scene = preload("res://Level/water_spring.tscn")
 @export var spring_number:int
@@ -15,7 +17,7 @@ func _ready() -> void:
 		var child = spring_Scene.instantiate()
 		child.position = Vector2(spacing, 0)
 		self.add_child(child)
-		spacing += 40
+		spacing += 35
 	for i in get_children():
 		if(i != water && i!=water_colision && !i is Area2D):
 			springs.append(i)
@@ -24,19 +26,23 @@ func _ready() -> void:
 		left.append(0)
 		right.append(0)
 	
-	
 
 func _physics_process(delta: float) -> void:
 	for i in springs:
-		i.water_update(k,dampening)
-	
+		var spring_x = i.global_position.x
+		if abs(camera1.global_position.x - spring_x) < 900 or abs(camera2.global_position.x - spring_x) < 900:
+			i.water_update(k, dampening)
+			i.optimize(true)
+		else:
+			i.optimize(false)
 	for i in range(springs.size()):
-		if(i > 1):
-			left[i] = spread * (springs[i].height - springs[i-1].height)
-			springs[i-1].velocity += left[i]
-		if(i < springs.size()-1):
-			left[i] = spread * (springs[i].height - springs[i+1].height)
-			springs[i+1].velocity += left[i]
+		if(abs(camera1.global_position.x - springs[i].global_position.x) < 900 || abs(camera2.global_position.x - springs[i].global_position.x) < 900):
+			if(i > 1):
+				left[i] = spread * (springs[i].height - springs[i-1].height)
+				springs[i-1].velocity += left[i]
+			if(i < springs.size()-1):
+				left[i] = spread * (springs[i].height - springs[i+1].height)
+				springs[i+1].velocity += left[i]
 	draw_water()
 func splash(i, speed):
 	springs[i].velocity +=speed
@@ -45,7 +51,8 @@ func splash(i, speed):
 func draw_water():
 	var points = []
 	for i in range(springs.size()):
-		points.append(springs[i].position)
+		if(abs(camera1.global_position.x - springs[i].global_position.x) < 900 || abs(camera2.global_position.x - springs[i].global_position.x) < 900):
+			points.append(springs[i].position)
 
 	var water_points = []
 
