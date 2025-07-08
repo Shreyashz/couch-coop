@@ -1,0 +1,125 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0jtshbrk1tdt"]
+
+[ext_resource type="FontFile" uid="uid://bqrjk7kleqkfk" path="res://Fonts/Buka Bird.ttf" id="1_q3jdf"]
+[ext_resource type="LabelSettings" uid="uid://xxhdf542ijo0" path="res://Fonts/LabelSettings.tres" id="2_q3jdf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lvfki"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xh4i"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fk3uj"]
+bg_color = Color(3.03224e-06, 0.725266, 0.206758, 1)
+border_width_left = 5
+border_width_top = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_if3yn"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
+
+[node name="Admin" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ImageBG" type="Panel" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_lvfki")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -242.0
+offset_top = -180.0
+offset_right = 242.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_q3jdf")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_4xh4i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fk3uj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_if3yn")
+text = "Start Game"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_q3jdf")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_4xh4i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fk3uj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_if3yn")
+text = "Options"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_q3jdf")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_4xh4i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fk3uj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_if3yn")
+text = "Exit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -328.0
+offset_right = 200.0
+offset_bottom = -259.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Admin Panel"
+label_settings = ExtResource("2_q3jdf")
+horizontal_alignment = 1

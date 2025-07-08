@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd28mxxi7h5i4"]
+
+[ext_resource type="Script" uid="uid://dmkbfgy30rih6" path="res://Scripts/spalsh_screen_manager.gd" id="1_hgp2l"]
+
+[node name="SpalshScreenManager" type="Node"]
+script = ExtResource("1_hgp2l")

@@ -1,0 +1,134 @@
+[gd_scene load_steps=8 format=3 uid="uid://yq2ncfodkqy5"]
+
+[ext_resource type="FontFile" uid="uid://bqrjk7kleqkfk" path="res://Fonts/Buka Bird.ttf" id="1_41xcd"]
+[ext_resource type="FontFile" uid="uid://dl53om4vhamg0" path="res://Fonts/Heyam.ttf" id="2_ho0dg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8o5m1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kspis"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abxvi"]
+bg_color = Color(3.03224e-06, 0.725266, 0.206758, 1)
+border_width_left = 5
+border_width_top = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_apdls"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gortb"]
+font = ExtResource("2_ho0dg")
+font_size = 70
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(5, 5)
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ImageBG" type="Panel" parent="."]
+offset_left = 16.0
+offset_top = -5.0
+offset_right = 1936.0
+offset_bottom = 1075.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8o5m1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -242.0
+offset_top = -180.0
+offset_right = 242.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_41xcd")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_kspis")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_abxvi")
+theme_override_styles/normal = SubResource("StyleBoxFlat_apdls")
+text = "Continue"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_41xcd")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_kspis")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_abxvi")
+theme_override_styles/normal = SubResource("StyleBoxFlat_apdls")
+text = "Options"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_41xcd")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_kspis")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_abxvi")
+theme_override_styles/normal = SubResource("StyleBoxFlat_apdls")
+text = "Exit to main menu"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -328.0
+offset_right = 200.0
+offset_bottom = -259.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Pause"
+label_settings = SubResource("LabelSettings_gortb")
+horizontal_alignment = 1

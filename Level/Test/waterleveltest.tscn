@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://blagjdbr7tfvs" path="res://Asset/tileSet/SeaTestTileSet.tres" id="1_pr8gx"]
 [ext_resource type="PackedScene" uid="uid://dku4duhlsp7o0" path="res://Prefab/Player1.tscn" id="2_nitmc"]
 [ext_resource type="PackedScene" uid="uid://dw5wft6rfnxan" path="res://Prefab/Player2.tscn" id="3_m16d8"]
-[ext_resource type="PackedScene" uid="uid://bt16dq5ib2ilc" path="res://Level/water_body.tscn" id="4_nitmc"]
+[ext_resource type="PackedScene" uid="uid://bt16dq5ib2ilc" path="res://Level/Test/water_body.tscn" id="4_nitmc"]
 
 [node name="Test" type="Node2D"]
 metadata/Level_Type = "TopDown"

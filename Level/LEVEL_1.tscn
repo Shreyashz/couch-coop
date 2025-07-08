@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cubn3tv08mftm"]
+
+[node name="Level1" type="Node2D"]
+metadata/zoomlevel = Vector2(0.5, 0.5)

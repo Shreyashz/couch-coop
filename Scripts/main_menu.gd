@@ -12,7 +12,8 @@ func _process(delta: float) -> void:
 
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://Level/gameViewLevel.tscn")
+	Global.game_controller.change_2d_scene("res://Level/LEVEL_1.tscn")
+	Global.game_controller.change_gui_scene("res://GUI/InGameGUI.tscn")
 
 
 func _on_options_pressed() -> void:

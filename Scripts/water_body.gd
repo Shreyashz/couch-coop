@@ -9,7 +9,7 @@ var k = 0.015
 @onready var water_colision: CollisionPolygon2D = $Area2D/water_colision
 var dampening = 0.02
 @onready var water: Polygon2D = $water
-@onready var spring_Scene = preload("res://Level/water_spring.tscn")
+@onready var spring_Scene = preload("res://Level/Test/water_spring.tscn")
 @export var spring_number:int
 var spread = 0.0050
 func _ready() -> void:
