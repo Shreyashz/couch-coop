@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://b13oojbbbtf8a"]
 
-[ext_resource type="Script" uid="uid://btp6j744kjfeb" path="res://Scripts/gameController.gd" id="1_k2t65"]
-[ext_resource type="PackedScene" uid="uid://cd28mxxi7h5i4" path="res://Prefab/spalsh_screen_manager.tscn" id="3_0436i"]
+[ext_resource type="Script" uid="uid://btp6j744kjfeb" path="res://Scripts/gameController.gd" id="1_a5dtb"]
+[ext_resource type="PackedScene" uid="uid://cd28mxxi7h5i4" path="res://Prefab/spalsh_screen_manager.tscn" id="2_uynoa"]
 
 [node name="GameController" type="Node" node_paths=PackedStringArray("world2d", "gui")]
-script = ExtResource("1_k2t65")
+script = ExtResource("1_a5dtb")
 world2d = NodePath("World2D")
 gui = NodePath("GUI")
 
@@ -16,6 +16,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="SpalshScreenManager" parent="GUI" instance=ExtResource("3_0436i")]
+[node name="SpalshScreenManager" parent="GUI" instance=ExtResource("2_uynoa")]
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0jtshbrk1tdt"]
+[gd_scene load_steps=8 format=3 uid="uid://c0jtshbrk1tdt"]
 
+[ext_resource type="Script" uid="uid://hv8rq743i6rc" path="res://Scripts/admin_panel.gd" id="1_a5d0t"]
 [ext_resource type="FontFile" uid="uid://bqrjk7kleqkfk" path="res://Fonts/Buka Bird.ttf" id="1_q3jdf"]
 [ext_resource type="LabelSettings" uid="uid://xxhdf542ijo0" path="res://Fonts/LabelSettings.tres" id="2_q3jdf"]
 
@@ -47,8 +48,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_a5d0t")
 
 [node name="ImageBG" type="Panel" parent="."]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_lvfki")
@@ -79,7 +82,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/hover = SubResource("StyleBoxFlat_4xh4i")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_fk3uj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_if3yn")
-text = "Start Game"
+text = "Load Some Level"
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -92,7 +95,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/hover = SubResource("StyleBoxFlat_4xh4i")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_fk3uj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_if3yn")
-text = "Options"
+text = "Load GUI"
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -105,7 +108,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/hover = SubResource("StyleBoxFlat_4xh4i")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_fk3uj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_if3yn")
-text = "Exit"
+text = "Back"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -123,3 +126,5 @@ grow_vertical = 2
 text = "Admin Panel"
 label_settings = ExtResource("2_q3jdf")
 horizontal_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_back_pressed"]

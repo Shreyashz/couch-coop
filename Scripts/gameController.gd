@@ -9,6 +9,11 @@ func _ready() -> void:
 	Global.game_controller = self
 	Global.game_controller.change_gui_scene("res://GUI/Main_menu.tscn")
 
+func pause():
+	current_2d_scene.process_mode = PROCESS_MODE_DISABLED
+func unpause():
+	current_2d_scene.process_mode = PROCESS_MODE_INHERIT
+
 func change_gui_scene(new_scene:String, delete:bool = true, keep_running:bool=false)->void:
 	if current_gui_scene != null:
 		if delete:
