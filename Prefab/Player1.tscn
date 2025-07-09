@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dku4duhlsp7o0"]
+[gd_scene load_steps=10 format=3 uid="uid://dku4duhlsp7o0"]
 
 [ext_resource type="Script" uid="uid://df2ak3fftj0ug" path="res://Scripts/playerMovement.gd" id="1_4o3m0"]
 [ext_resource type="Resource" uid="uid://8g05ye4w781h" path="res://Resources/p1_player_control.tres" id="2_77ygc"]
@@ -51,6 +51,9 @@ _data = {
 radius = 19.0
 height = 96.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77ygc"]
+size = Vector2(55, 10)
+
 [node name="p1_player_body" type="CharacterBody2D" node_paths=PackedStringArray("spriteControl")]
 collision_layer = 4
 collision_mask = 7
@@ -84,3 +87,11 @@ region_rect = Rect2(0, 0, 388, 534)
 position = Vector2(5, 1)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CapsuleShape2D_fun7e")
+
+[node name="2jArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2jArea"]
+position = Vector2(6.5, 73)
+shape = SubResource("RectangleShape2D_77ygc")
+
+[connection signal="area_entered" from="2jArea" to="." method="_on_j_area_area_entered"]

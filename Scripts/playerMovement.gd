@@ -1,4 +1,5 @@
 extends CharacterBody2D
+#im going to start commenting things bc its getting VERY COMPLICATED
 var swimming = false
 var can_roll = false
 var active_roll = false
@@ -7,11 +8,12 @@ var pos=0
 @export var controls:Resource = null
 @export var spriteControl:Sprite2D = null
 var pa_abajo = false
-
+#little variables we need to check things, mostly flags
 const SPEED = 400.0
 var JUMP_VELOCITY = -500.0
+#speed and jump thingys
 func ready() -> void:
-	if has_meta("player_index"):
+	if has_meta("player_index"):# THIS THING DOESNT WORK FOR SOME REASON
 		match curr_scene.get_meta("player_index"):
 			0:
 				JUMP_VELOCITY -= 100
@@ -27,13 +29,13 @@ func apply_gravity(delta):
 		velocity += -get_gravity() * delta
 
 func _process(delta: float) -> void:
-	if(name == "p2_player_body"):
+	if(name == "p2_player_body"): #kay so, if the name is of the player 2, then it states that it can roll
 		can_roll=true
-	if(can_roll):
+	if(can_roll):#if it can roll, then you just store the value of the position (if i dont do this it gets fucky)
 		pos = get_parent().get_node("Ball_collision").global_position
-	if(can_roll && !active_roll):
+	if(can_roll && !active_roll): #if it can roll but isnt rolling then just grab the ball and take it with you
 		get_parent().get_node("Ball_collision").global_position = global_position
-	if(can_roll && active_roll):
+	if(can_roll && active_roll): #if it can roll and its rolling you teleport to the ball
 		global_position=get_parent().get_node("Ball_collision").global_position
 	if(velocity.x>0):
 		# walking Right
@@ -53,10 +55,10 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 	if(Input.is_action_just_pressed(controls.move_down) and swimming):
 		velocity.y = -JUMP_VELOCITY
-	if(Input.is_action_just_pressed(controls.interact) && can_roll):
+	if(Input.is_action_just_pressed(controls.interact) && can_roll): #you activate the roll mode with the interact button
 		active_roll = !active_roll
 		if(!active_roll):
-			rotation=0.0
+			rotation=0.0#if you stop rolling, you get rotated to your initial pos
 			get_parent().get_node("Ball_collision").rotation=0.0
 		get_node("playerBody_Collision").disabled = !get_node("playerBody_Collision").disabled
 		get_parent().get_node("Ball_collision").get_child(0).disabled = !get_parent().get_node("Ball_collision").get_child(0).disabled
@@ -64,18 +66,28 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis(controls.move_left, controls.move_right)
-	if(!active_roll):
+	if(!active_roll):#if it isnt rolling, well you walk
 		if direction:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-	else:
+	else: #if it isnt, then you check for some raycast so it doesnt move while on the air and just apply force to the ball
 		get_parent().get_node("Ball_collision").get_node("floor_raycast").global_rotation =0.0
 		get_parent().get_node("Ball_collision").get_node("floor_raycast2").global_rotation =0.0
 		get_parent().get_node("Ball_collision").get_node("floor_raycast3").global_rotation =0.0
 		if(get_parent().get_node("Ball_collision").get_node("floor_raycast").is_colliding() || get_parent().get_node("Ball_collision").get_node("floor_raycast2").is_colliding() || get_parent().get_node("Ball_collision").get_node("floor_raycast3").is_colliding()):
-			get_parent().get_node("Ball_collision").apply_force(Vector2(direction * 2500, 0))
-			self.rotation = get_parent().get_node("Ball_collision").rotation
+			get_parent().get_node("Ball_collision").apply_force(Vector2(direction * 1250, 0))
+			self.rotation = get_parent().get_node("Ball_collision").rotation #penguin rolls yeyeaa
 		
 
 	move_and_slide()
+
+
+func _on_j_area_area_entered(area: Area2D) -> void:
+	if(area.get_parent().name == "p2_player_body"):
+		velocity.y = JUMP_VELOCITY * 1.5
+
+func _on_stopping_area_entered(area: Area2D) -> void:
+	if(area.get_parent().name == "p1_player_body"):
+		var direction = (global_position - get_parent().get_node("Ball_collision").global_position).normalized()
+		get_parent().get_node("Ball_collision").apply_force(-direction * 10000)
