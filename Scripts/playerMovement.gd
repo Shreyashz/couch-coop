@@ -27,7 +27,6 @@ func apply_gravity(delta):
 		velocity += -get_gravity() * delta
 
 func _process(delta: float) -> void:
-	print(rotation)
 	if(name == "p2_player_body"):
 		can_roll=true
 	if(can_roll):
@@ -72,8 +71,10 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 	else:
 		get_parent().get_node("Ball_collision").get_node("floor_raycast").global_rotation =0.0
-		if(get_parent().get_node("Ball_collision").get_node("floor_raycast").is_colliding()):
-			get_parent().get_node("Ball_collision").apply_force(Vector2(direction * 2000, 0))
+		get_parent().get_node("Ball_collision").get_node("floor_raycast2").global_rotation =0.0
+		get_parent().get_node("Ball_collision").get_node("floor_raycast3").global_rotation =0.0
+		if(get_parent().get_node("Ball_collision").get_node("floor_raycast").is_colliding() || get_parent().get_node("Ball_collision").get_node("floor_raycast2").is_colliding() || get_parent().get_node("Ball_collision").get_node("floor_raycast3").is_colliding()):
+			get_parent().get_node("Ball_collision").apply_force(Vector2(direction * 2500, 0))
 			self.rotation = get_parent().get_node("Ball_collision").rotation
 		
 
