@@ -4,14 +4,18 @@ class_name gameController extends Node
 
 var current_2d_scene:Node2D
 var current_gui_scene:Control
+var paused:bool
 
 func _ready() -> void:
 	Global.game_controller = self
 	Global.game_controller.change_gui_scene("res://GUI/Main_menu.tscn")
+	Global.game_controller.paused = true
 
 func pause():
+	Global.game_controller.paused = true
 	current_2d_scene.process_mode = PROCESS_MODE_DISABLED
 func unpause():
+	Global.game_controller.paused = false
 	current_2d_scene.process_mode = PROCESS_MODE_INHERIT
 
 func change_gui_scene(new_scene:String, delete:bool = true, keep_running:bool=false)->void:
@@ -22,8 +26,10 @@ func change_gui_scene(new_scene:String, delete:bool = true, keep_running:bool=fa
 			current_gui_scene.visible = false
 		else:
 			gui.remove_child(current_gui_scene)
-	var new = load(new_scene).instantiate()
+	var new:Control = load(new_scene).instantiate()
 	gui.add_child(new)
+	if current_gui_scene:
+		new.set_meta("previous", current_gui_scene.scene_file_path)
 	current_gui_scene = new
 
 func change_2d_scene(new_scene:String, delete:bool = true, keep_running:bool=false)->void:
@@ -38,5 +44,4 @@ func change_2d_scene(new_scene:String, delete:bool = true, keep_running:bool=fal
 	world2d.add_child(new)
 	current_2d_scene = new
 	if current_2d_scene.has_meta("LEVEL"):
-		print("Lol")
-		change_gui_scene("res://GUI/InGameGUI.tscn")
+		change_gui_scene("res://GUI/InGameUI.tscn")

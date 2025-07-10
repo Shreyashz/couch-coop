@@ -3,10 +3,10 @@
 [ext_resource type="LabelSettings" uid="uid://xxhdf542ijo0" path="res://Fonts/LabelSettings.tres" id="1_d4j21"]
 
 [node name="Level2" type="Node2D"]
+metadata/LEVEL = 2
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
 text = "LEVEL two"
 label_settings = ExtResource("1_d4j21")
-metadata/LEVEL = 2

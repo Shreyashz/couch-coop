@@ -21,5 +21,5 @@ func _on_options_pressed() -> void:
 
 
 func _on_Continue_pressed() -> void:
+	Global.game_controller.change_gui_scene("res://GUI/InGameUI.tscn")
 	Global.game_controller.unpause()
-	Global.game_controller.change_gui_scene("res://GUI/InGameGUI.tscn")

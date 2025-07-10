@@ -3,6 +3,7 @@ extends Control
 @export var StatusLabel: Label 
 @export var PathTextBox:LineEdit
 
+@onready var admin: Control = $"."
 var dir:DirAccess
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +16,10 @@ func _process(delta: float) -> void:
 
 
 func _on_back_pressed() -> void:
-	Global.game_controller.change_gui_scene("res://GUI/PauseMenu.tscn")
+	if admin.has_meta("previous"):
+		Global.game_controller.change_gui_scene(admin.get_meta("previous"))
+	else:
+		Global.game_controller.change_gui_scene("res://GUI/Main_menu.tscn")
 
 func _check_path(path:String)->bool:
 	if dir:
