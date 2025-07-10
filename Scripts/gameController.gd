@@ -2,8 +2,8 @@ class_name gameController extends Node
 @export var world2d:Node2D
 @export var gui:Control
 
-var current_2d_scene
-var current_gui_scene
+var current_2d_scene:Node2D
+var current_gui_scene:Control
 
 func _ready() -> void:
 	Global.game_controller = self
@@ -37,3 +37,6 @@ func change_2d_scene(new_scene:String, delete:bool = true, keep_running:bool=fal
 	var new = load(new_scene).instantiate()
 	world2d.add_child(new)
 	current_2d_scene = new
+	if current_2d_scene.has_meta("LEVEL"):
+		print("Lol")
+		change_gui_scene("res://GUI/InGameGUI.tscn")
