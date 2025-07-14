@@ -4,9 +4,12 @@ var swimming = false
 var can_roll = false
 var active_roll = false
 var pos=0
+
 @export var curr_scene:Node2D = null
 @export var controls:Resource = null
 @export var spriteControl:Sprite2D = null
+@export var animationTree:AnimationTree = null
+
 var pa_abajo = false
 #little variables we need to check things, mostly flags
 const SPEED = 400.0
@@ -70,8 +73,12 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis(controls.move_left, controls.move_right)
 	if(!active_roll):#if it isnt rolling, well you walk
 		if direction:
+			animationTree.set("parameters/Transition/transition_request", "Walk")
+			animationTree.set("parameters/TimeScale/scale", 2.0)
 			velocity.x = direction * SPEED
 		else:
+			animationTree.set("parameters/Transition/transition_request", "Idle")
+			animationTree.set("parameters/TimeScale/scale", 1.0)
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 	else: #if it isnt, then you check for some raycast so it doesnt move while on the air and just apply force to the ball
 		get_parent().get_node("Ball_collision").get_node("floor_raycast").global_rotation =0.0

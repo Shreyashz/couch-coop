@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dw5wft6rfnxan"]
+[gd_scene load_steps=14 format=3 uid="uid://dw5wft6rfnxan"]
 
 [ext_resource type="Script" uid="uid://df2ak3fftj0ug" path="res://Scripts/playerMovement.gd" id="1_x7emr"]
 [ext_resource type="Resource" uid="uid://xu07y7nnc2mh" path="res://Resources/p2_player_control.tres" id="2_iuxfw"]
@@ -24,38 +24,71 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
-[sub_resource type="Animation" id="Animation_n820l"]
-resource_name = "penguinWalk"
+[sub_resource type="Animation" id="Animation_iuxfw"]
+resource_name = "Walk"
+length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("playerBody_Sprite:region_rect")
+tracks/0/path = NodePath("playerBody_Sprite:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = false
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.33, 0.66, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.233333, 0.433333, 0.633333, 0.833333, 1.03333, 1.23333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Rect2(0, 0, 388, 534), Rect2(388, 0, 388, 534), Rect2(776, 0, 388, 534), Rect2(1164, 0, 388, 534)]
+"values": [7, 8, 9, 10, 11, 12, 13]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ndn3r"]
 _data = {
-&"RESET": SubResource("Animation_77ygc"),
-&"penguinWalk": SubResource("Animation_n820l")
+&"Ideal": SubResource("Animation_77ygc"),
+&"Walk": SubResource("Animation_iuxfw")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cah3m"]
+animation = &"Ideal"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_fun7e"]
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_iuxfw"]
+xfade_time = 0.3
+input_0/name = "Walk"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "Idle"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ah13f"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ah13f"]
+graph_offset = Vector2(-949, 60)
+nodes/Idle/node = SubResource("AnimationNodeAnimation_cah3m")
+nodes/Idle/position = Vector2(-620, 260)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_fun7e")
+nodes/TimeScale/position = Vector2(100, 119)
+nodes/Transition/node = SubResource("AnimationNodeTransition_iuxfw")
+nodes/Transition/position = Vector2(-300, 100)
+nodes/Walk/node = SubResource("AnimationNodeAnimation_ah13f")
+nodes/Walk/position = Vector2(-580, 80)
+node_connections = [&"TimeScale", 0, &"Transition", &"Transition", 0, &"Walk", &"Transition", 1, &"Idle", &"output", 0, &"TimeScale"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iuxfw"]
 radius = 26.6667
 height = 68.0
 
-[node name="p2_player_body" type="CharacterBody2D" node_paths=PackedStringArray("spriteControl")]
+[node name="p2_player_body" type="CharacterBody2D" node_paths=PackedStringArray("spriteControl", "animationTree")]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_x7emr")
 controls = ExtResource("2_iuxfw")
 spriteControl = NodePath("playerBody_Sprite")
+animationTree = NodePath("AnimationTree")
 metadata/player_index = 1
 
 [node name="playerBody_Collision" type="CollisionShape2D" parent="."]
@@ -66,7 +99,15 @@ shape = SubResource("CapsuleShape2D_cah3m")
 libraries = {
 &"": SubResource("AnimationLibrary_ndn3r")
 }
-autoplay = "RESET"
+autoplay = "Ideal"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_ah13f")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0
+parameters/Transition/current_state = "Idle"
+parameters/Transition/transition_request = ""
+parameters/Transition/current_index = 1
 
 [node name="playerBody_Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -75,6 +116,7 @@ scale = Vector2(3, 2.989)
 texture = ExtResource("3_cah3m")
 hframes = 7
 vframes = 7
+frame = 1
 region_rect = Rect2(0, 0, 388, 534)
 
 [node name="water_colission" type="Area2D" parent="."]

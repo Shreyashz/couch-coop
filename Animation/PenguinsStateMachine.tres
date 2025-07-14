@@ -1,0 +1,26 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=6 format=3 uid="uid://d2aicn087ujib"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_77ygc"]
+animation = &"Ideal"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fun7e"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n820l"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ndn3r"]
+xfade_time = 0.3
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lt747"]
+xfade_time = 0.3
+switch_mode = 1
+
+[resource]
+states/Ideal/node = SubResource("AnimationNodeAnimation_77ygc")
+states/Ideal/position = Vector2(385, 168)
+states/Walk/node = SubResource("AnimationNodeAnimation_fun7e")
+states/Walk/position = Vector2(385, 45)
+transitions = ["Start", "Ideal", SubResource("AnimationNodeStateMachineTransition_n820l"), "Walk", "Ideal", SubResource("AnimationNodeStateMachineTransition_ndn3r"), "Ideal", "Walk", SubResource("AnimationNodeStateMachineTransition_lt747")]
+graph_offset = Vector2(-51, -9)
