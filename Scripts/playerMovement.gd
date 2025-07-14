@@ -51,6 +51,8 @@ func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	if (Input.is_action_just_pressed(controls.jump) or Input.is_action_just_pressed(controls.move_up)) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+	if(Input.is_action_just_released(controls.jump) or Input.is_action_just_released(controls.move_up)) and !is_on_floor():
+		velocity.y = 0
 	if (Input.is_action_just_pressed(controls.jump) or Input.is_action_just_pressed(controls.move_up)) and !is_on_floor() and swimming:
 		velocity.y = JUMP_VELOCITY
 	if(Input.is_action_just_pressed(controls.move_down) and swimming):
