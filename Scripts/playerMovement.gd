@@ -18,12 +18,16 @@ const SPEED = 400.0
 var JUMP_VELOCITY = -500.0
 #speed and jump thingys
 func ready() -> void:
+	print("got it")
 	if has_meta("player_index"):# THIS THING DOESNT WORK FOR SOME REASON
-		match curr_scene.get_meta("player_index"):
+		match get_meta("player_index"):
 			0:
-				JUMP_VELOCITY -= 100
+				JUMP_VELOCITY += 100
 			1:
-				JUMP_VELOCITY = JUMP_VELOCITY + 100
+				JUMP_VELOCITY  -= 100
+				can_roll=true
+
+
 func apply_gravity(delta): 
 	# Add the gravity.
 	if not is_on_floor() && !swimming:
@@ -34,8 +38,6 @@ func apply_gravity(delta):
 		velocity += -get_gravity() * delta
 
 func _process(delta: float) -> void:
-	if(name == "p2_player_body"): #kay so, if the name is of the player 2, then it states that it can roll
-		can_roll=true
 	if(can_roll):#if it can roll, then you just store the value of the position (if i dont do this it gets fucky)
 		pos = get_parent().get_node("Ball_collision").global_position
 	if(can_roll && !active_roll): #if it can roll but isnt rolling then just grab the ball and take it with you
@@ -54,15 +56,15 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
-	if (Input.is_action_just_pressed(controls.jump) or Input.is_action_just_pressed(controls.move_up)) and is_on_floor():
+	if (Input.is_action_just_pressed(controls.move_up)) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-	if(Input.is_action_just_released(controls.jump) or Input.is_action_just_released(controls.move_up)) and !is_on_floor():
+	if( Input.is_action_just_released(controls.move_up)) and !is_on_floor():
 		velocity.y = 0
-	if (Input.is_action_just_pressed(controls.jump) or Input.is_action_just_pressed(controls.move_up)) and !is_on_floor() and swimming:
+	if (Input.is_action_just_pressed(controls.move_up)) and !is_on_floor() and swimming:
 		velocity.y = JUMP_VELOCITY
 	if(Input.is_action_just_pressed(controls.move_down) and swimming):
 		velocity.y = -JUMP_VELOCITY
-	if(Input.is_action_just_pressed(controls.interact) && can_roll): #you activate the roll mode with the interact button
+	if(Input.is_action_just_pressed(controls.jump) && can_roll): #you activate the roll mode with the interact button
 		active_roll = !active_roll
 		if(!active_roll):
 			rotation=0.0#if you stop rolling, you get rotated to your initial pos
@@ -90,7 +92,6 @@ func _physics_process(delta: float) -> void:
 			get_parent().get_node("Ball_collision").apply_force(Vector2(direction * 1250, 0))
 			self.rotation = get_parent().get_node("Ball_collision").rotation #penguin rolls yeyeaa
 		
-
 	move_and_slide()
 
 

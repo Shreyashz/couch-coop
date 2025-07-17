@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://cubn3tv08mftm"]
+[gd_scene load_steps=11 format=4 uid="uid://cubn3tv08mftm"]
 
 [ext_resource type="Texture2D" uid="uid://cv86e3df0j0ih" path="res://Asset/spritesheet/spritesheet-double.png" id="1_vp2tc"]
 [ext_resource type="PackedScene" uid="uid://dku4duhlsp7o0" path="res://Prefab/Player1.tscn" id="2_ebo35"]
 [ext_resource type="PackedScene" uid="uid://dw5wft6rfnxan" path="res://Prefab/Player2.tscn" id="3_4jmyp"]
+[ext_resource type="PackedScene" uid="uid://cxgmki7w54mmc" path="res://Prefab/NextLevelDoor.tscn" id="4_4jmyp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xtbgl"]
 texture = ExtResource("1_vp2tc")
@@ -178,6 +179,9 @@ tile_map_data = PackedByteArray("AAAEAD8AAQAKAAoAAAAMAD8AAQAKAAoAAAAOAD4AAQAKAAo
 tile_set = SubResource("TileSet_ebo35")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_4jmyp")]
+position = Vector2(-702, -320)
 
 [node name="p1_player_body" parent="." instance=ExtResource("2_ebo35")]
 position = Vector2(-751, 60)

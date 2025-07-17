@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxgmki7w54mmc"]
+
+[ext_resource type="Texture2D" uid="uid://cfqyfegc3anyj" path="res://icon.svg" id="1_cg32a"]
+[ext_resource type="Script" uid="uid://dasch2mhibo0c" path="res://Scripts/next_level_door.gd" id="1_jdhef"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdhef"]
+size = Vector2(126, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cg32a"]
+size = Vector2(126, 42)
+
+[node name="StaticBody2D" type="StaticBody2D" groups=["Interactable"]]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_jdhef")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cg32a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -28)
+shape = SubResource("RectangleShape2D_jdhef")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 28)
+shape = SubResource("RectangleShape2D_cg32a")
