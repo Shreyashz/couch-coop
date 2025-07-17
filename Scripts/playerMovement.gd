@@ -4,7 +4,9 @@ var swimming = false
 var can_roll = false
 var active_roll = false
 var pos=0
+var defaultAnimationScale:float = 1.0
 
+@export var WalkScaleAnimation:float = 1.0
 @export var curr_scene:Node2D = null
 @export var controls:Resource = null
 @export var spriteControl:Sprite2D = null
@@ -74,11 +76,11 @@ func _physics_process(delta: float) -> void:
 	if(!active_roll):#if it isnt rolling, well you walk
 		if direction:
 			animationTree.set("parameters/Transition/transition_request", "Walk")
-			animationTree.set("parameters/TimeScale/scale", 2.0)
+			animationTree.set("parameters/TimeScale/scale", WalkScaleAnimation)
 			velocity.x = direction * SPEED
 		else:
 			animationTree.set("parameters/Transition/transition_request", "Idle")
-			animationTree.set("parameters/TimeScale/scale", 1.0)
+			animationTree.set("parameters/TimeScale/scale", defaultAnimationScale)
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 	else: #if it isnt, then you check for some raycast so it doesnt move while on the air and just apply force to the ball
 		get_parent().get_node("Ball_collision").get_node("floor_raycast").global_rotation =0.0

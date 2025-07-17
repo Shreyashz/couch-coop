@@ -86,6 +86,7 @@ height = 68.0
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_x7emr")
+WalkScaleAnimation = 1.5
 controls = ExtResource("2_iuxfw")
 spriteControl = NodePath("playerBody_Sprite")
 animationTree = NodePath("AnimationTree")
@@ -116,7 +117,7 @@ scale = Vector2(3, 2.989)
 texture = ExtResource("3_cah3m")
 hframes = 7
 vframes = 7
-frame = 1
+frame = 4
 region_rect = Rect2(0, 0, 388, 534)
 
 [node name="water_colission" type="Area2D" parent="."]
