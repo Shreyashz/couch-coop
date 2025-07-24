@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://dkuob2gcm3qes"]
+[gd_scene load_steps=9 format=4 uid="uid://dkuob2gcm3qes"]
 
 [ext_resource type="LabelSettings" uid="uid://xxhdf542ijo0" path="res://Fonts/LabelSettings.tres" id="1_d4j21"]
 [ext_resource type="Texture2D" uid="uid://cv86e3df0j0ih" path="res://Asset/spritesheet/spritesheet-double.png" id="2_sph0h"]
 [ext_resource type="Script" uid="uid://b4itxnywdwytb" path="res://Level/camera_handler.gd" id="3_nsu8l"]
 [ext_resource type="PackedScene" uid="uid://dku4duhlsp7o0" path="res://Prefab/Player1.tscn" id="4_ueql7"]
 [ext_resource type="PackedScene" uid="uid://dw5wft6rfnxan" path="res://Prefab/Player2.tscn" id="5_n4eh4"]
-[ext_resource type="PackedScene" uid="uid://b5tgh50ayphn4" path="res://fallingPlatform.tscn" id="6_n4eh4"]
+[ext_resource type="PackedScene" uid="uid://cint2frrvs0hn" path="res://fallingPlatform.tscn" id="6_n4eh4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nsu8l"]
 texture = ExtResource("2_sph0h")
@@ -14,9 +14,7 @@ texture_region_size = Vector2i(128, 128)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:0/0 = 0
 2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(54.754, -64, 64, -64, 64, 64, -9.55893, 64, 4.77946, 50.6623, 25.4459, 31.6145, 44.5934, 10.725, 50.8026, -3.95132, 51.3671, -24.2724)
 3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(57.3731, -64, 64, -64, 64, 64, 56.6901, 64)
 4:0/0 = 0
 5:0/0 = 0
 6:0/0 = 0
@@ -47,11 +45,8 @@ texture_region_size = Vector2i(128, 128)
 31:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(12.2942, 34.1507, 40.9808, 8.87917, 64, -14.3433, 64, 64, -64, 64)
 2:1/0 = 0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -14.0496, -39.6694, -36.3636, -18.1818, -56.1983, -9.87756, -64, 53.719, -64, 64, -64)
 3:1/0 = 0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -14.0496, -39.6694, -36.3636, -18.1818, -56.1983, 2.47934, -64, 53.719, -64, 64, -64)
 4:1/0 = 0
 5:1/0 = 0
 6:1/0 = 0
@@ -4878,27 +4873,12 @@ physics_layer_0/collision_layer = 5
 physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_nsu8l")
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_n4eh4"]
-friction = 2.0
-rough = true
-absorbent = true
-
-[sub_resource type="GDScript" id="GDScript_1ve8i"]
-script/source = "extends RigidBody2D
-"
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_qpq2p"]
-radius = 55.0091
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ahvxs"]
-radius = 58.0345
-
 [node name="Level2" type="Node2D"]
 metadata/LEVEL = 2
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-3, 0)
-tile_map_data = PackedByteArray("AAD4/wUAAAAAAAAAAAD5/wUAAAAAAAAAAAD6/wUAAAAAAAAAAAD7/wUAAAAAAAAAAAD8/wUAAAAAAAAAAAD9/wUAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAAAAAAAAAAAAAAKAP//AAAAAAAAAAAKAP7/AAAAAAAAAAAKAP3/AAAAAAAAAAAKAPz/AAAAAAAAAAAKAPv/AAAAAAAAAAAKAPr/AAAAAAAAAAAJAPr/AAAAAAAAAAAIAPr/AAAAAAAAAAAHAPr/AAAAAAAAAAAGAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAADAPr/AAAAAAAAAAACAPr/AAAAAAAAAAABAPr/AAAAAAAAAAAAAPr/AAAAAAAAAAD///r/AAAAAAAAAAD+//r/AAAAAAAAAAD9//r/AAAAAAAAAAD8//r/AAAAAAAAAAD7//r/AAAAAAAAAAD6//r/AAAAAAAAAAD5//r/AAAAAAAAAAD4//r/AAAAAAAAAAD3//r/AAAAAAAAAAD3//v/AAAAAAAAAAD3//z/AAAAAAAAAAD3//3/AAAAAAAAAAD3//7/AAAAAAAAAAD3////AAAAAAAAAAD3/wAAAAAAAAAAAAD3/wEAAAAAAAAAAAD3/wIAAAAAAAAAAAD3/wMAAAAAAAAAAAD3/wQAAAAAAAAAAAD3/wUAAAAAAAAAAAAFAAQAAAACAAEAAAAFAAMAAAACAAAAAAAFAAIAAAADAAAAAAAFAAEAAAADAAAAAAAFAAAAAAADAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAIAP//AAAFAAQAAAAEAAQAAAABAAEAAAA=")
+tile_map_data = PackedByteArray("AAD4/wUAAAAAAAAAAAD5/wUAAAAAAAAAAAD6/wUAAAAAAAAAAAD7/wUAAAAAAAAAAAD8/wUAAAAAAAAAAAD9/wUAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAAAAAAAAAAAAAAKAP//AAAAAAAAAAAKAP7/AAAAAAAAAAAKAP3/AAAAAAAAAAAKAPz/AAAAAAAAAAAKAPv/AAAAAAAAAAAKAPr/AAAAAAAAAAAJAPr/AAAAAAAAAAAIAPr/AAAAAAAAAAAHAPr/AAAAAAAAAAAGAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAADAPr/AAAAAAAAAAACAPr/AAAAAAAAAAABAPr/AAAAAAAAAAAAAPr/AAAAAAAAAAD///r/AAAAAAAAAAD+//r/AAAAAAAAAAD9//r/AAAAAAAAAAD8//r/AAAAAAAAAAD7//r/AAAAAAAAAAD6//r/AAAAAAAAAAD5//r/AAAAAAAAAAD4//r/AAAAAAAAAAD3//r/AAAAAAAAAAD3//v/AAAAAAAAAAD3//z/AAAAAAAAAAD3//3/AAAAAAAAAAD3//7/AAAAAAAAAAD3////AAAAAAAAAAD3/wAAAAAAAAAAAAD3/wEAAAAAAAAAAAD3/wIAAAAAAAAAAAD3/wMAAAAAAAAAAAD3/wQAAAAAAAAAAAD3/wUAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_rmkee")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -4907,7 +4887,7 @@ zoom = Vector2(0.8, 0.8)
 script = ExtResource("3_nsu8l")
 
 [node name="p2_player_body" parent="." instance=ExtResource("5_n4eh4")]
-position = Vector2(-142, 570)
+position = Vector2(116, 557)
 scale = Vector2(1.5, 1.5)
 
 [node name="p1_player_body" parent="." instance=ExtResource("4_ueql7")]
@@ -4919,40 +4899,5 @@ offset_bottom = 23.0
 text = "LEVEL two"
 label_settings = ExtResource("1_d4j21")
 
-[node name="StaticBody2D3" parent="." instance=ExtResource("6_n4eh4")]
-position = Vector2(296, 290)
-
-[node name="StaticBody2D4" parent="." instance=ExtResource("6_n4eh4")]
-position = Vector2(429, 183)
-
-[node name="StaticBody2D2" parent="." instance=ExtResource("6_n4eh4")]
-position = Vector2(123, 335)
-
-[node name="StaticBody2D" parent="." instance=ExtResource("6_n4eh4")]
-position = Vector2(27, 335)
-
-[node name="StaticBody2D5" parent="." instance=ExtResource("6_n4eh4")]
-position = Vector2(574, 66)
-
-[node name="Ball_collision" type="RigidBody2D" parent="."]
-mass = 0.45
-physics_material_override = SubResource("PhysicsMaterial_n4eh4")
-script = SubResource("GDScript_1ve8i")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball_collision"]
-shape = SubResource("CircleShape2D_qpq2p")
-disabled = true
-
-[node name="stopping" type="Area2D" parent="Ball_collision"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball_collision/stopping"]
-shape = SubResource("CircleShape2D_ahvxs")
-
-[node name="floor_raycast" type="RayCast2D" parent="Ball_collision"]
-target_position = Vector2(0, 64)
-
-[node name="floor_raycast2" type="RayCast2D" parent="Ball_collision"]
-target_position = Vector2(-57, 43)
-
-[node name="floor_raycast3" type="RayCast2D" parent="Ball_collision"]
-target_position = Vector2(57, 43)
+[node name="RigidBody2D" parent="." instance=ExtResource("6_n4eh4")]
+position = Vector2(237, 531)

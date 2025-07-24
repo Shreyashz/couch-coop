@@ -29,7 +29,9 @@ func ready() -> void:
 				can_roll=true
 
 
-func apply_gravity(delta): 
+func apply_gravity(delta):
+	if(name == "p2_player_body"):
+		can_roll=true
 	# Add the gravity.
 	if not is_on_floor() && !swimming:
 		velocity += get_gravity() * delta
@@ -59,7 +61,7 @@ func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	if (Input.is_action_just_pressed(controls.move_up)) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-	if( Input.is_action_just_released(controls.move_up)) and !is_on_floor():
+	if( Input.is_action_just_released(controls.move_up)) and !is_on_floor() and velocity.y < 0:
 		velocity.y = 0
 	if (Input.is_action_just_pressed(controls.move_up)) and !is_on_floor() and swimming:
 		velocity.y = JUMP_VELOCITY
@@ -82,7 +84,6 @@ func _physics_process(delta: float) -> void:
 			animationTree.set("parameters/TimeScale/scale", WalkScaleAnimation)
 			velocity.x = direction * SPEED
 			if(Input.is_action_pressed(controls.interact) && !can_roll && stamina >= 0):
-				print(stamina)
 				velocity.x += 300 * direction
 				stamina -= 10
 			else:

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cint2frrvs0hn"]
+
+[ext_resource type="Script" uid="uid://ctu2fcfjcxw0w" path="res://Scripts/falling_platform.gd" id="1_pgstd"]
+[ext_resource type="Texture2D" uid="uid://05g8u8ux55mk" path="res://Asset/joint.png" id="1_pxqck"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgstd"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2paa"]
+size = Vector2(96, 9)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+script = ExtResource("1_pgstd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(12, 12)
+shape = SubResource("RectangleShape2D_pgstd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(12, 12)
+texture = ExtResource("1_pxqck")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -52)
+shape = SubResource("RectangleShape2D_k2paa")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
