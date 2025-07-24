@@ -3,6 +3,7 @@ extends CharacterBody2D
 var swimming = false
 var can_roll = false
 var active_roll = false
+var stamina = 150
 var pos=0
 var defaultAnimationScale:float = 1.0
 
@@ -80,6 +81,13 @@ func _physics_process(delta: float) -> void:
 			animationTree.set("parameters/Transition/transition_request", "Walk")
 			animationTree.set("parameters/TimeScale/scale", WalkScaleAnimation)
 			velocity.x = direction * SPEED
+			if(Input.is_action_pressed(controls.interact) && !can_roll && stamina >= 0):
+				print(stamina)
+				velocity.x += 300 * direction
+				stamina -= 10
+			else:
+				if(stamina < 150):
+					stamina += 5
 		else:
 			animationTree.set("parameters/Transition/transition_request", "Idle")
 			animationTree.set("parameters/TimeScale/scale", defaultAnimationScale)
