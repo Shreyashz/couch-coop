@@ -6,6 +6,7 @@ const FILE_BEGIN = "res://Level/LEVEL_"
 @export var gui:Control
 
 
+var first_player_ready:bool
 var current_2d_scene:Node2D
 var path_current_2d_scene:String
 var current_gui_scene:Control
@@ -49,12 +50,16 @@ func change_2d_scene(new_scene:String, delete:bool = true, keep_running:bool=fal
 	world2d.add_child(new)
 	path_current_2d_scene = new_scene
 	current_2d_scene = new
+	first_player_ready = false
 	if current_2d_scene.has_meta("LEVEL"):
 		change_gui_scene("res://GUI/InGameUI.tscn")
 
 func load_next_level() -> void:
-	var current_scene_file = path_current_2d_scene
-	var next_level_number = current_scene_file.to_int() + 1
-	var next_level_path = FILE_BEGIN + str(next_level_number) + ".tscn"
-	print(next_level_path)
-	change_2d_scene(next_level_path)
+	if(!first_player_ready):
+		first_player_ready = true
+	else:
+		var current_scene_file = path_current_2d_scene
+		var next_level_number = current_scene_file.to_int() + 1
+		var next_level_path = FILE_BEGIN + str(next_level_number) + ".tscn"
+		print(next_level_path)
+		change_2d_scene(next_level_path)

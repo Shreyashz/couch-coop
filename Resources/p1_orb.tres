@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="OrbControls" load_steps=2 format=3 uid="uid://c1tcrmd8t5uu7"]
+
+[ext_resource type="Script" uid="uid://dw3wkfkg4wc7d" path="res://Resources/orbControls.gd" id="1_ngqba"]
+
+[resource]
+script = ExtResource("1_ngqba")
+player_index = 0
+metadata/_custom_type_script = "uid://dw3wkfkg4wc7d"

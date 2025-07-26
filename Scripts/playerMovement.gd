@@ -6,6 +6,7 @@ var active_roll = false
 var stamina = 150
 var pos=0
 var defaultAnimationScale:float = 1.0
+var pending_unroll:bool = false
 
 @export var WalkScaleAnimation:float = 1.0
 @export var curr_scene:Node2D = null
@@ -18,14 +19,12 @@ var pa_abajo = false
 const SPEED = 400.0
 var JUMP_VELOCITY = -500.0
 #speed and jump thingys
-func ready() -> void:
-	print("got it")
-	if has_meta("player_index"):# THIS THING DOESNT WORK FOR SOME REASON
-		match get_meta("player_index"):
+func _ready() -> void:
+	if has_meta("playerIndex"):# THIS THING DOESNT WORK FOR SOME REASON
+		match get_meta("playerIndex"):
 			0:
-				JUMP_VELOCITY += 100
+				JUMP_VELOCITY -= 100
 			1:
-				JUMP_VELOCITY  -= 100
 				can_roll=true
 
 
@@ -59,6 +58,9 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
+	if(pending_unroll and is_on_floor()):
+		#print("Lol")
+		_complete_unroll()
 	if (Input.is_action_just_pressed(controls.move_up)) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	if( Input.is_action_just_released(controls.move_up)) and !is_on_floor() and velocity.y < 0:
@@ -68,13 +70,15 @@ func _physics_process(delta: float) -> void:
 	if(Input.is_action_just_pressed(controls.move_down) and swimming):
 		velocity.y = -JUMP_VELOCITY
 	if(Input.is_action_just_pressed(controls.jump) && can_roll): #you activate the roll mode with the interact button
-		active_roll = !active_roll
-		if(!active_roll):
-			rotation=0.0#if you stop rolling, you get rotated to your initial pos
-			get_parent().get_node("Ball_collision").rotation=0.0
-		get_node("playerBody_Collision").disabled = !get_node("playerBody_Collision").disabled
-		get_parent().get_node("Ball_collision").get_child(0).disabled = !get_parent().get_node("Ball_collision").get_child(0).disabled
-
+		_unroll_now()
+		#Code to fix snapping issue on ball
+		#if(!active_roll):
+			#_unroll_now()
+		#elif(active_roll and is_on_floor()):
+			#_unroll_now()
+		#else:
+			#pending_unroll = true
+		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis(controls.move_left, controls.move_right)
@@ -103,6 +107,16 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 
+func _unroll_now():
+	rotation=0.0#if you stop rolling, you get rotated to your initial pos
+	get_parent().get_node("Ball_collision").rotation=0.0
+	get_node("playerBody_Collision").disabled = !get_node("playerBody_Collision").disabled
+	get_parent().get_node("Ball_collision").get_child(0).disabled = !get_parent().get_node("Ball_collision").get_child(0).disabled
+	active_roll = !active_roll
+
+func _complete_unroll():
+	if(!active_roll):
+		_unroll_now()
 
 func _on_j_area_area_entered(area: Area2D) -> void:
 	if(area.get_parent().name == "p2_player_body"):

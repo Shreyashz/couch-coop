@@ -90,7 +90,7 @@ WalkScaleAnimation = 1.5
 controls = ExtResource("2_iuxfw")
 spriteControl = NodePath("playerBody_Sprite")
 animationTree = NodePath("AnimationTree")
-metadata/player_index = 1
+metadata/playerIndex = 1
 
 [node name="playerBody_Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0.166667, -0.241997)
@@ -117,7 +117,6 @@ scale = Vector2(3, 2.989)
 texture = ExtResource("3_cah3m")
 hframes = 7
 vframes = 7
-frame = 4
 region_rect = Rect2(0, 0, 388, 534)
 
 [node name="water_colission" type="Area2D" parent="."]
