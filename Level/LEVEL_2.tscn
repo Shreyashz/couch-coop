@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=4 uid="uid://dkuob2gcm3qes"]
+[gd_scene load_steps=11 format=4 uid="uid://dkuob2gcm3qes"]
 
 [ext_resource type="Texture2D" uid="uid://cv86e3df0j0ih" path="res://Asset/spritesheet/spritesheet-double.png" id="2_sph0h"]
 [ext_resource type="Script" path="res://Level/camera_handler.gd" id="3_nsu8l"]
 [ext_resource type="PackedScene" uid="uid://dku4duhlsp7o0" path="res://Prefab/Player1.tscn" id="4_ueql7"]
 [ext_resource type="PackedScene" uid="uid://dw5wft6rfnxan" path="res://Prefab/Player2.tscn" id="5_n4eh4"]
-[ext_resource type="PackedScene" path="res://fallingPlatform.tscn" id="6_n4eh4"]
+[ext_resource type="PackedScene" uid="uid://5mh2os6lt4x3" path="res://Prefab/ball_collision.tscn" id="6_1ve8i"]
+[ext_resource type="PackedScene" uid="uid://cy24awk5vl72a" path="res://fallingPlatform.tscn" id="6_n4eh4"]
+[ext_resource type="PackedScene" uid="uid://05n0tpcx2s88" path="res://Level/NextLevel/next_level1.tscn" id="7_qpq2p"]
+[ext_resource type="PackedScene" uid="uid://ddfc476drfnts" path="res://Level/NextLevel/next_level2.tscn" id="8_ahvxs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nsu8l"]
 texture = ExtResource("2_sph0h")
@@ -4877,27 +4880,12 @@ physics_layer_0/collision_layer = 5
 physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_nsu8l")
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_n4eh4"]
-friction = 2.0
-rough = true
-absorbent = true
-
-[sub_resource type="GDScript" id="GDScript_1ve8i"]
-script/source = "extends RigidBody2D
-"
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_qpq2p"]
-radius = 55.0091
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ahvxs"]
-radius = 58.0345
-
 [node name="Level2" type="Node2D"]
 metadata/LEVEL = 2
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-3, 0)
-tile_map_data = PackedByteArray("AAD4/wUAAAAAAAAAAAD5/wUAAAAAAAAAAAD6/wUAAAAAAAAAAAD7/wUAAAAAAAAAAAD8/wUAAAAAAAAAAAD9/wUAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAAAAAAAAAAAAAAKAP//AAAAAAAAAAAKAP7/AAAAAAAAAAAKAP3/AAAAAAAAAAAKAPz/AAAAAAAAAAAKAPv/AAAAAAAAAAAKAPr/AAAAAAAAAAAJAPr/AAAAAAAAAAAIAPr/AAAAAAAAAAAHAPr/AAAAAAAAAAAGAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAADAPr/AAAAAAAAAAACAPr/AAAAAAAAAAABAPr/AAAAAAAAAAAAAPr/AAAAAAAAAAD///r/AAAAAAAAAAD+//r/AAAAAAAAAAD9//r/AAAAAAAAAAD8//r/AAAAAAAAAAD7//r/AAAAAAAAAAD6//r/AAAAAAAAAAD5//r/AAAAAAAAAAD4//r/AAAAAAAAAAD3//r/AAAAAAAAAAD3//v/AAAAAAAAAAD3//z/AAAAAAAAAAD3//3/AAAAAAAAAAD3//7/AAAAAAAAAAD3////AAAAAAAAAAD3/wAAAAAAAAAAAAD3/wEAAAAAAAAAAAD3/wIAAAAAAAAAAAD3/wMAAAAAAAAAAAD3/wQAAAAAAAAAAAD3/wUAAAAAAAAAAAAFAAQAAAACAAEAAAAFAAMAAAACAAAAAAAFAAIAAAADAAAAAAAFAAEAAAADAAAAAAAFAAAAAAADAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAIAP//AAAFAAQAAAAEAAQAAAABAAEAAAA=")
+tile_map_data = PackedByteArray("AAD4/wUAAAAAAAAAAAD5/wUAAAAAAAAAAAD6/wUAAAAAAAAAAAD7/wUAAAAAAAAAAAD8/wUAAAAAAAAAAAD9/wUAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAAAAAAAAAAAAAAKAP//AAAAAAAAAAAKAP7/AAAAAAAAAAAKAP3/AAAAAAAAAAAKAPz/AAAAAAAAAAAKAPv/AAAAAAAAAAAKAPr/AAAAAAAAAAAJAPr/AAAAAAAAAAAIAPr/AAAAAAAAAAAHAPr/AAAAAAAAAAAGAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAADAPr/AAAAAAAAAAACAPr/AAAAAAAAAAABAPr/AAAAAAAAAAAAAPr/AAAAAAAAAAD///r/AAAAAAAAAAD+//r/AAAAAAAAAAD9//r/AAAAAAAAAAD8//r/AAAAAAAAAAD7//r/AAAAAAAAAAD6//r/AAAAAAAAAAD5//r/AAAAAAAAAAD4//r/AAAAAAAAAAD3//r/AAAAAAAAAAD3//v/AAAAAAAAAAD3//z/AAAAAAAAAAD3//3/AAAAAAAAAAD3//7/AAAAAAAAAAD3////AAAAAAAAAAD3/wAAAAAAAAAAAAD3/wEAAAAAAAAAAAD3/wIAAAAAAAAAAAD3/wMAAAAAAAAAAAD3/wQAAAAAAAAAAAD3/wUAAAAAAAAAAAAFAAQAAAACAAEAAAAFAAMAAAACAAAAAAAFAAIAAAADAAAAAAAFAAEAAAADAAAAAAAFAAAAAAADAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAIAP//AAAFAAMAAAAEAAQAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_rmkee")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -4912,40 +4900,25 @@ scale = Vector2(1.5, 1.5)
 [node name="p1_player_body" parent="." instance=ExtResource("4_ueql7")]
 position = Vector2(-751, 60)
 
-[node name="StaticBody2D3" parent="." instance=ExtResource("6_n4eh4")]
+[node name="FallingPlatform" parent="." instance=ExtResource("6_n4eh4")]
 position = Vector2(296, 290)
 
-[node name="StaticBody2D4" parent="." instance=ExtResource("6_n4eh4")]
+[node name="FallingPlatform2" parent="." instance=ExtResource("6_n4eh4")]
 position = Vector2(429, 183)
 
-[node name="StaticBody2D2" parent="." instance=ExtResource("6_n4eh4")]
+[node name="FallingPlatform3" parent="." instance=ExtResource("6_n4eh4")]
 position = Vector2(123, 335)
 
-[node name="StaticBody2D" parent="." instance=ExtResource("6_n4eh4")]
+[node name="FallingPlatform4" parent="." instance=ExtResource("6_n4eh4")]
 position = Vector2(27, 335)
 
-[node name="StaticBody2D5" parent="." instance=ExtResource("6_n4eh4")]
+[node name="FallingPlatform5" parent="." instance=ExtResource("6_n4eh4")]
 position = Vector2(574, 66)
 
-[node name="Ball_collision" type="RigidBody2D" parent="."]
-mass = 0.45
-physics_material_override = SubResource("PhysicsMaterial_n4eh4")
-script = SubResource("GDScript_1ve8i")
+[node name="Ball_collision" parent="." instance=ExtResource("6_1ve8i")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball_collision"]
-shape = SubResource("CircleShape2D_qpq2p")
-disabled = true
+[node name="NextLevel1" parent="." instance=ExtResource("7_qpq2p")]
+position = Vector2(1205, -78)
 
-[node name="stopping" type="Area2D" parent="Ball_collision"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball_collision/stopping"]
-shape = SubResource("CircleShape2D_ahvxs")
-
-[node name="floor_raycast" type="RayCast2D" parent="Ball_collision"]
-target_position = Vector2(0, 64)
-
-[node name="floor_raycast2" type="RayCast2D" parent="Ball_collision"]
-target_position = Vector2(-57, 43)
-
-[node name="floor_raycast3" type="RayCast2D" parent="Ball_collision"]
-target_position = Vector2(57, 43)
+[node name="NextLevel2" parent="." instance=ExtResource("8_ahvxs")]
+position = Vector2(871, -78)

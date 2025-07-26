@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://cubn3tv08mftm"]
+[gd_scene load_steps=9 format=4 uid="uid://cubn3tv08mftm"]
 
 [ext_resource type="Texture2D" uid="uid://cv86e3df0j0ih" path="res://Asset/spritesheet/spritesheet-double.png" id="1_vp2tc"]
 [ext_resource type="PackedScene" uid="uid://05n0tpcx2s88" path="res://Level/NextLevel/next_level1.tscn" id="2_4jmyp"]
 [ext_resource type="PackedScene" uid="uid://dku4duhlsp7o0" path="res://Prefab/Player1.tscn" id="2_ebo35"]
 [ext_resource type="PackedScene" uid="uid://dw5wft6rfnxan" path="res://Prefab/Player2.tscn" id="3_4jmyp"]
+[ext_resource type="PackedScene" uid="uid://5mh2os6lt4x3" path="res://Prefab/ball_collision.tscn" id="4_x1sp2"]
 [ext_resource type="PackedScene" uid="uid://ddfc476drfnts" path="res://Level/NextLevel/next_level2.tscn" id="5_dxnhx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xtbgl"]
@@ -156,21 +157,6 @@ physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 sources/1 = SubResource("TileSetAtlasSource_xtbgl")
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ebo35"]
-friction = 2.0
-rough = true
-absorbent = true
-
-[sub_resource type="GDScript" id="GDScript_ebo35"]
-script/source = "extends RigidBody2D
-"
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ebo35"]
-radius = 55.0091
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_dxnhx"]
-radius = 58.0345
-
 [node name="Level1" type="Node2D"]
 metadata/zoomlevel = Vector2(0.5, 0.5)
 metadata/LEVEL = 1
@@ -188,33 +174,10 @@ position = Vector2(-751, 60)
 position = Vector2(-640, 75)
 scale = Vector2(1.5, 1.5)
 
-[node name="Ball_collision" type="RigidBody2D" parent="."]
-mass = 0.45
-physics_material_override = SubResource("PhysicsMaterial_ebo35")
-script = SubResource("GDScript_ebo35")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball_collision"]
-shape = SubResource("CircleShape2D_ebo35")
-disabled = true
-
-[node name="stopping" type="Area2D" parent="Ball_collision"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball_collision/stopping"]
-shape = SubResource("CircleShape2D_dxnhx")
-
-[node name="floor_raycast" type="RayCast2D" parent="Ball_collision"]
-target_position = Vector2(0, 64)
-
-[node name="floor_raycast2" type="RayCast2D" parent="Ball_collision"]
-target_position = Vector2(-57, 43)
-
-[node name="floor_raycast3" type="RayCast2D" parent="Ball_collision"]
-target_position = Vector2(57, 43)
+[node name="Ball_collision" parent="." instance=ExtResource("4_x1sp2")]
 
 [node name="NextLevel1" parent="." instance=ExtResource("2_4jmyp")]
 position = Vector2(-808, -327)
 
 [node name="NextLevel2" parent="." instance=ExtResource("5_dxnhx")]
 position = Vector2(-578, -327)
-
-[connection signal="area_entered" from="Ball_collision/stopping" to="p1_player_body" method="_on_stopping_area_entered"]

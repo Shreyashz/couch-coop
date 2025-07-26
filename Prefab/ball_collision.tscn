@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://5mh2os6lt4x3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ebo35"]
+friction = 2.0
+rough = true
+absorbent = true
+
+[sub_resource type="GDScript" id="GDScript_ebo35"]
+script/source = "extends RigidBody2D
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ebo35"]
+radius = 55.0091
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dxnhx"]
+radius = 58.0345
+
+[node name="Ball_collision" type="RigidBody2D"]
+mass = 0.45
+physics_material_override = SubResource("PhysicsMaterial_ebo35")
+script = SubResource("GDScript_ebo35")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ebo35")
+disabled = true
+
+[node name="stopping" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stopping"]
+shape = SubResource("CircleShape2D_dxnhx")
+
+[node name="floor_raycast" type="RayCast2D" parent="."]
+target_position = Vector2(0, 64)
+
+[node name="floor_raycast2" type="RayCast2D" parent="."]
+target_position = Vector2(-57, 43)
+
+[node name="floor_raycast3" type="RayCast2D" parent="."]
+target_position = Vector2(57, 43)
