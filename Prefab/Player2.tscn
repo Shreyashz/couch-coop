@@ -82,7 +82,7 @@ node_connections = [&"TimeScale", 0, &"Transition", &"Transition", 0, &"Walk", &
 radius = 26.6667
 height = 68.0
 
-[node name="p2_player_body" type="CharacterBody2D" node_paths=PackedStringArray("spriteControl", "animationTree")]
+[node name="p2_player_body" type="CharacterBody2D" node_paths=PackedStringArray("spriteControl", "animationTree") groups=["Player"]]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_x7emr")

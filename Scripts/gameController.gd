@@ -1,8 +1,13 @@
 class_name gameController extends Node
+
+const FILE_BEGIN = "res://Level/LEVEL_"
+
 @export var world2d:Node2D
 @export var gui:Control
 
+
 var current_2d_scene:Node2D
+var path_current_2d_scene:String
 var current_gui_scene:Control
 var paused:bool
 
@@ -42,6 +47,14 @@ func change_2d_scene(new_scene:String, delete:bool = true, keep_running:bool=fal
 			world2d.remove_child(current_2d_scene)
 	var new = load(new_scene).instantiate()
 	world2d.add_child(new)
+	path_current_2d_scene = new_scene
 	current_2d_scene = new
 	if current_2d_scene.has_meta("LEVEL"):
 		change_gui_scene("res://GUI/InGameUI.tscn")
+
+func load_next_level() -> void:
+	var current_scene_file = path_current_2d_scene
+	var next_level_number = current_scene_file.to_int() + 1
+	var next_level_path = FILE_BEGIN + str(next_level_number) + ".tscn"
+	print(next_level_path)
+	change_2d_scene(next_level_path)

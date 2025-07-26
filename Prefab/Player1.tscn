@@ -85,7 +85,7 @@ height = 96.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77ygc"]
 size = Vector2(55, 10)
 
-[node name="p1_player_body" type="CharacterBody2D" node_paths=PackedStringArray("spriteControl", "animationTree")]
+[node name="p1_player_body" type="CharacterBody2D" node_paths=PackedStringArray("spriteControl", "animationTree") groups=["Player"]]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_4o3m0")
@@ -120,7 +120,7 @@ scale = Vector2(4.5, 4.5)
 texture = ExtResource("3_77ygc")
 hframes = 7
 vframes = 7
-frame = 9
+frame = 12
 region_rect = Rect2(0, 0, 388, 534)
 
 [node name="water_colission" type="Area2D" parent="."]

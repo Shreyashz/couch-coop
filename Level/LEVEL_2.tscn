@@ -2,10 +2,10 @@
 
 [ext_resource type="LabelSettings" uid="uid://xxhdf542ijo0" path="res://Fonts/LabelSettings.tres" id="1_d4j21"]
 [ext_resource type="Texture2D" uid="uid://cv86e3df0j0ih" path="res://Asset/spritesheet/spritesheet-double.png" id="2_sph0h"]
-[ext_resource type="Script" uid="uid://b4itxnywdwytb" path="res://Level/camera_handler.gd" id="3_nsu8l"]
+[ext_resource type="Script" path="res://Level/camera_handler.gd" id="3_nsu8l"]
 [ext_resource type="PackedScene" uid="uid://dku4duhlsp7o0" path="res://Prefab/Player1.tscn" id="4_ueql7"]
 [ext_resource type="PackedScene" uid="uid://dw5wft6rfnxan" path="res://Prefab/Player2.tscn" id="5_n4eh4"]
-[ext_resource type="PackedScene" uid="uid://b5tgh50ayphn4" path="res://fallingPlatform.tscn" id="6_n4eh4"]
+[ext_resource type="PackedScene" path="res://fallingPlatform.tscn" id="6_n4eh4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nsu8l"]
 texture = ExtResource("2_sph0h")

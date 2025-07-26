@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2v38n4r6jn1d"]
+
+[ext_resource type="Script" uid="uid://dasch2mhibo0c" path="res://Scripts/next_level_door.gd" id="1_qj2d1"]
+[ext_resource type="Texture2D" uid="uid://cfqyfegc3anyj" path="res://icon.svg" id="2_c4l77"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2mi1"]
+size = Vector2(126, 122)
+
+[node name="Orb2" type="Area2D"]
+script = ExtResource("1_qj2d1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("2_c4l77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i2mi1")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
