@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cy24awk5vl72a"]
 
 [ext_resource type="Script" uid="uid://ctu2fcfjcxw0w" path="res://Scripts/falling_platform.gd" id="1_pgstd"]
-[ext_resource type="Texture2D" uid="uid://05g8u8ux55mk" path="res://Asset/joint.png" id="1_pxqck"]
+[ext_resource type="Texture2D" uid="uid://tgw07uvyqflg" path="res://Asset/tileSet/tilesheet_complete.png" id="2_pgstd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgstd"]
 size = Vector2(8, 8)
@@ -17,8 +17,10 @@ scale = Vector2(12, 12)
 shape = SubResource("RectangleShape2D_pgstd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(12, 12)
-texture = ExtResource("1_pxqck")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_pgstd")
+region_enabled = true
+region_rect = Rect2(513, 575, 63, 63)
 
 [node name="Area2D" type="Area2D" parent="."]
 

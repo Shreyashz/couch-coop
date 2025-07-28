@@ -7,7 +7,7 @@ extends Path2D
 @export var path:PathFollow2D
 @export var animationplayer:AnimationPlayer
 
-func _read():
+func _ready() -> void:
 	if not loop:
 		animationplayer.play("move")
 		animationplayer.speed_scale = speed_scale
