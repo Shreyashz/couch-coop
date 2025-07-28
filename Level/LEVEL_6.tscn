@@ -1,16 +1,16 @@
-[gd_scene load_steps=11 format=4 uid="uid://dkuob2gcm3qes"]
+[gd_scene load_steps=11 format=4 uid="uid://cvg4v3otkvwsp"]
 
-[ext_resource type="Texture2D" uid="uid://cv86e3df0j0ih" path="res://Asset/spritesheet/spritesheet-double.png" id="2_sph0h"]
-[ext_resource type="Script" uid="uid://b4itxnywdwytb" path="res://Level/camera_handler.gd" id="3_nsu8l"]
-[ext_resource type="PackedScene" uid="uid://dku4duhlsp7o0" path="res://Prefab/Player1.tscn" id="4_ueql7"]
-[ext_resource type="PackedScene" uid="uid://dw5wft6rfnxan" path="res://Prefab/Player2.tscn" id="5_n4eh4"]
-[ext_resource type="PackedScene" uid="uid://5mh2os6lt4x3" path="res://Prefab/ball_collision.tscn" id="6_1ve8i"]
-[ext_resource type="PackedScene" uid="uid://cy24awk5vl72a" path="res://fallingPlatform.tscn" id="6_n4eh4"]
-[ext_resource type="PackedScene" uid="uid://05n0tpcx2s88" path="res://Level/NextLevel/next_level1.tscn" id="7_qpq2p"]
-[ext_resource type="PackedScene" uid="uid://ddfc476drfnts" path="res://Level/NextLevel/next_level2.tscn" id="8_ahvxs"]
+[ext_resource type="Texture2D" uid="uid://cv86e3df0j0ih" path="res://Asset/spritesheet/spritesheet-double.png" id="1_qxlbt"]
+[ext_resource type="Script" uid="uid://b4itxnywdwytb" path="res://Level/camera_handler.gd" id="2_okfob"]
+[ext_resource type="PackedScene" uid="uid://dw5wft6rfnxan" path="res://Prefab/Player2.tscn" id="3_c5b0k"]
+[ext_resource type="PackedScene" uid="uid://dku4duhlsp7o0" path="res://Prefab/Player1.tscn" id="4_8ja3f"]
+[ext_resource type="PackedScene" uid="uid://5mh2os6lt4x3" path="res://Prefab/ball_collision.tscn" id="5_xui6b"]
+[ext_resource type="PackedScene" uid="uid://05n0tpcx2s88" path="res://Level/NextLevel/next_level1.tscn" id="6_3csi7"]
+[ext_resource type="PackedScene" uid="uid://ddfc476drfnts" path="res://Level/NextLevel/next_level2.tscn" id="7_xh443"]
+[ext_resource type="PackedScene" uid="uid://du54ix2xntqnb" path="res://Prefab/snowball_spawer.tscn" id="8_okfob"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nsu8l"]
-texture = ExtResource("2_sph0h")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ha26"]
+texture = ExtResource("1_qxlbt")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
@@ -4874,52 +4874,39 @@ texture_region_size = Vector2i(128, 128)
 76:95/0 = 0
 77:95/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_rmkee"]
+[sub_resource type="TileSet" id="TileSet_dk2iy"]
 tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 5
 physics_layer_0/collision_mask = 5
-sources/0 = SubResource("TileSetAtlasSource_nsu8l")
+sources/0 = SubResource("TileSetAtlasSource_6ha26")
 
-[node name="Level2" type="Node2D"]
-metadata/LEVEL = 2
+[node name="Node2D" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-3, 0)
-tile_map_data = PackedByteArray("AAD4/wUAAAAAAAAAAAD5/wUAAAAAAAAAAAD6/wUAAAAAAAAAAAD7/wUAAAAAAAAAAAD8/wUAAAAAAAAAAAD9/wUAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAAAAAAAAAAAAAAKAP//AAAAAAAAAAAKAP7/AAAAAAAAAAAKAP3/AAAAAAAAAAAKAPz/AAAAAAAAAAAKAPv/AAAAAAAAAAAKAPr/AAAAAAAAAAAJAPr/AAAAAAAAAAAIAPr/AAAAAAAAAAAHAPr/AAAAAAAAAAAGAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAADAPr/AAAAAAAAAAACAPr/AAAAAAAAAAABAPr/AAAAAAAAAAAAAPr/AAAAAAAAAAD///r/AAAAAAAAAAD+//r/AAAAAAAAAAD9//r/AAAAAAAAAAD8//r/AAAAAAAAAAD7//r/AAAAAAAAAAD6//r/AAAAAAAAAAD5//r/AAAAAAAAAAD4//r/AAAAAAAAAAD3//r/AAAAAAAAAAD3//v/AAAAAAAAAAD3//z/AAAAAAAAAAD3//3/AAAAAAAAAAD3//7/AAAAAAAAAAD3////AAAAAAAAAAD3/wAAAAAAAAAAAAD3/wEAAAAAAAAAAAD3/wIAAAAAAAAAAAD3/wMAAAAAAAAAAAD3/wQAAAAAAAAAAAD3/wUAAAAAAAAAAAAFAAQAAAACAAEAAAAFAAMAAAACAAAAAAAFAAIAAAADAAAAAAAFAAEAAAADAAAAAAAFAAAAAAADAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAIAP//AAAFAAMAAAAEAAQAAAABAAEAAAA=")
-tile_set = SubResource("TileSet_rmkee")
+tile_map_data = PackedByteArray("AAD4/wgAAAAAAAAAAAD5/wgAAAAAAAAAAAD6/wgAAAAAAAAAAAD7/wgAAAAAAAAAAAD8/wgAAAAAAAAAAAD9/wgAAAAAAAAAAAD+/wgAAAAAAAAAAAD//wgAAAAAAAAAAAAAAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAPf/AAAAAAAAAAAIAPf/AAAAAAAAAAAHAPf/AAAAAAAAAAAGAPf/AAAAAAAAAAAFAPf/AAAAAAAAAAAEAPf/AAAAAAAAAAADAPf/AAAAAAAAAAACAPf/AAAAAAAAAAABAPf/AAAAAAAAAAAAAPf/AAAAAAAAAAD///f/AAAAAAAAAAD+//f/AAAAAAAAAAD9//f/AAAAAAAAAAD8//f/AAAAAAAAAAD7//f/AAAAAAAAAAD6//f/AAAAAAAAAAD5//f/AAAAAAAAAAD4//f/AAAAAAAAAAAKAPf/AAAAAAAAAAAKAPj/AAAAAAAAAAAKAPn/AAAAAAAAAAAKAPr/AAAAAAAAAAAKAPv/AAAAAAAAAAAKAPz/AAAAAAAAAAAKAP3/AAAAAAAAAAAKAP7/AAAAAAAAAAAKAP//AAAAAAAAAAAKAAAAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAUAAAAAAAAAAAD4//j/AAAAAAAAAAD4//n/AAAAAAAAAAD4//r/AAAAAAAAAAD4//v/AAAAAAAAAAD4//z/AAAAAAAAAAD4//3/AAAAAAAAAAD4//7/AAAAAAAAAAD4////AAAAAAAAAAD4/wAAAAAAAAAAAAD4/wMAAAAAAAAAAAD4/wQAAAAAAAAAAAD4/wUAAAAAAAAAAAD4/wYAAAAAAAAAAAD4/wcAAAAAAAAAAAABAPr/AAAAAAAAAAACAPr/AAAAAAAAAAADAPr/AAAAAAAAAAD+//r/AAAAAAAAAAAEAPr/AAAAAAAAAAD4/wEAAAAAAAAAAAD4/wIAAAAAAAAAAAAEAAUAAAAAAAAAAAADAAUAAAAAAAAAAAACAAUAAAAAAAAAAAABAAUAAAAAAAAAAAAAAAUAAAAAAAAAAAD//wUAAAAAAAAAAAD+/wIAAAAAAAAAAAD9/wIAAAAAAAAAAAD8/wIAAAAAAAAAAAD7/wIAAAAAAAAAAAD6/wIAAAAAAAAAAAD5/wIAAAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAJAP//AAAAAAAAAAAIAP//AAAAAAAAAAAFAPv/AAAAAAAAAAAGAPz/AAAAAAAAAAD9//r/AAAAAAAAAAD8//r/AAAAAAAAAAD7//r/AAAAAAAAAAD6//r/AAAAAAAAAAD5//r/AAAAAAAAAAD+//z/AAAAAAAAAAD9//z/AAAAAAAAAAD8//z/AAAAAAAAAAD7//z/AAAAAAAAAAD6//z/AAAAAAAAAAD5//z/AAAAAAAAAAD5/wEAAAAFAAIAAAA=")
+tile_set = SubResource("TileSet_dk2iy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(146, 36)
-zoom = Vector2(0.8, 0.8)
-script = ExtResource("3_nsu8l")
-camera_zoom = Vector2(0.8, 0.8)
+position = Vector2(191, 36)
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("2_okfob")
+camera_zoom = Vector2(0.5, 0.5)
 
-[node name="p2_player_body" parent="." instance=ExtResource("5_n4eh4")]
-position = Vector2(-142, 570)
+[node name="p2_player_body" parent="." instance=ExtResource("3_c5b0k")]
+position = Vector2(905, 907)
 scale = Vector2(1.5, 1.5)
 
-[node name="p1_player_body" parent="." instance=ExtResource("4_ueql7")]
-position = Vector2(-751, 60)
+[node name="p1_player_body" parent="." instance=ExtResource("4_8ja3f")]
+position = Vector2(1038, 880)
 
-[node name="FallingPlatform" parent="." instance=ExtResource("6_n4eh4")]
-position = Vector2(296, 290)
+[node name="Ball_collision" parent="." instance=ExtResource("5_xui6b")]
 
-[node name="FallingPlatform2" parent="." instance=ExtResource("6_n4eh4")]
-position = Vector2(429, 183)
+[node name="NextLevel1" parent="." instance=ExtResource("6_3csi7")]
+position = Vector2(-841, -837)
 
-[node name="FallingPlatform3" parent="." instance=ExtResource("6_n4eh4")]
-position = Vector2(123, 335)
+[node name="NextLevel2" parent="." instance=ExtResource("7_xh443")]
+position = Vector2(-816, -584)
 
-[node name="FallingPlatform4" parent="." instance=ExtResource("6_n4eh4")]
-position = Vector2(27, 335)
-
-[node name="FallingPlatform5" parent="." instance=ExtResource("6_n4eh4")]
-position = Vector2(574, 66)
-
-[node name="Ball_collision" parent="." instance=ExtResource("6_1ve8i")]
-
-[node name="NextLevel1" parent="." instance=ExtResource("7_qpq2p")]
-position = Vector2(1205, -78)
-
-[node name="NextLevel2" parent="." instance=ExtResource("8_ahvxs")]
-position = Vector2(871, -78)
+[node name="SnowballSpawer" parent="." instance=ExtResource("8_okfob")]
+position = Vector2(184, -882)

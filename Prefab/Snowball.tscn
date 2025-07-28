@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqnf8iut8rcye"]
+[gd_scene load_steps=4 format=3 uid="uid://bqnf8iut8rcye"]
 
 [ext_resource type="Texture2D" uid="uid://05g8u8ux55mk" path="res://Asset/joint.png" id="1_r7xmt"]
+[ext_resource type="Script" uid="uid://cnkhuhb4jigqr" path="res://Prefab/snowball.gd" id="1_yn5rr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yn5rr"]
 radius = 54.0093
 
 [node name="Snowball" type="RigidBody2D"]
+script = ExtResource("1_yn5rr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yn5rr")
@@ -13,3 +15,9 @@ shape = SubResource("CircleShape2D_yn5rr")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(12, 12)
 texture = ExtResource("1_r7xmt")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(65, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+target_position = Vector2(-65, 0)
