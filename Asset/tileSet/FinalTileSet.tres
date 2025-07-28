@@ -1,6 +1,9 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://buyducg1cxv74"]
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://buyducg1cxv74"]
 
 [ext_resource type="Texture2D" uid="uid://tgw07uvyqflg" path="res://Asset/tileSet/tilesheet_complete.png" id="1_dmdxo"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_dmdxo"]
+tile_data = PackedInt32Array(0, 327680, 6, 1, 393216, 6, 2, 393216, 6, 3, 393216, 6, 4, 458752, 6)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dfj7q"]
 texture = ExtResource("1_dmdxo")
@@ -310,3 +313,4 @@ terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "wall"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_dfj7q")
+pattern_0 = SubResource("TileMapPattern_dmdxo")

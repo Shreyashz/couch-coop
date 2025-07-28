@@ -1,10 +1,25 @@
 [gd_scene load_steps=7 format=3 uid="uid://byhxdnfw87g66"]
 
 [ext_resource type="Script" uid="uid://dw7cp635vqshy" path="res://Scripts/moving_platforms.gd" id="1_bngr6"]
-[ext_resource type="Texture2D" uid="uid://2uled3tn3y5a" path="res://Asset/sprites/platforms.png" id="1_no4jo"]
+[ext_resource type="Texture2D" uid="uid://tgw07uvyqflg" path="res://Asset/tileSet/tilesheet_complete.png" id="2_bngr6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_no4jo"]
-size = Vector2(120.038, 60.0609)
+size = Vector2(76.9799, 45.2259)
+
+[sub_resource type="Animation" id="Animation_bngr6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_no4jo"]
 resource_name = "move"
@@ -21,21 +36,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-1.56, 1),
 "update": 0,
 "values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_bngr6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../PathFollow2D:progress_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bngr6"]
@@ -61,16 +61,17 @@ update_rotation = false
 update_scale = false
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(-1.55431e-15, -2.84217e-14)
 rotation = -0.0157882
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
-scale = Vector2(7, 7)
-texture = ExtResource("1_no4jo")
+position = Vector2(-0.284176, 17.9978)
+texture = ExtResource("2_bngr6")
 region_enabled = true
-region_rect = Rect2(0, 48.6985, 17, 8.30947)
+region_rect = Rect2(512, 384, 68, 50)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
-position = Vector2(-0.484149, -0.0868318)
+position = Vector2(-1.0946, 15.9822)
 shape = SubResource("RectangleShape2D_no4jo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

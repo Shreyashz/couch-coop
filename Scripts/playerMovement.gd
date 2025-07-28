@@ -17,13 +17,13 @@ var pending_unroll:bool = false
 var pa_abajo = false
 #little variables we need to check things, mostly flags
 const SPEED = 400.0
-var JUMP_VELOCITY = -500.0
+var JUMP_VELOCITY = -600.0
 #speed and jump thingys
 func _ready() -> void:
 	if has_meta("playerIndex"):# THIS THING DOESNT WORK FOR SOME REASON
 		match get_meta("playerIndex"):
 			0:
-				JUMP_VELOCITY -= 100
+				pass
 			1:
 				can_roll=true
 
