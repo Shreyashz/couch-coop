@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://duu3422xsf7b6"]
+
+[ext_resource type="Texture2D" uid="uid://cfqyfegc3anyj" path="res://icon.svg" id="1_6jp4y"]
+[ext_resource type="Script" uid="uid://csm0xhyfiapeu" path="res://Scripts/moving_wall.gd" id="1_cbkpt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6jp4y"]
+size = Vector2(124, 255)
+
+[node name="DaWall" type="CharacterBody2D"]
+collision_mask = 9
+script = ExtResource("1_cbkpt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -61)
+scale = Vector2(1, 2)
+texture = ExtResource("1_6jp4y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -61.5)
+shape = SubResource("RectangleShape2D_6jp4y")
