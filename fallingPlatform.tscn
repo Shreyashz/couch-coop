@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cy24awk5vl72a"]
 
-[ext_resource type="Script" path="res://Scripts/falling_platform.gd" id="1_pgstd"]
+[ext_resource type="Script" uid="uid://ctu2fcfjcxw0w" path="res://Scripts/falling_platform.gd" id="1_pgstd"]
 [ext_resource type="Texture2D" uid="uid://05g8u8ux55mk" path="res://Asset/joint.png" id="1_pxqck"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgstd"]

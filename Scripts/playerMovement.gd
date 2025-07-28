@@ -44,8 +44,10 @@ func _process(delta: float) -> void:
 		pos = get_parent().get_node("Ball_collision").global_position
 	if(can_roll && !active_roll): #if it can roll but isnt rolling then just grab the ball and take it with you
 		get_parent().get_node("Ball_collision").global_position = global_position
+		get_parent().get_node("Ball_collision").linear_velocity = velocity
 	if(can_roll && active_roll): #if it can roll and its rolling you teleport to the ball
 		global_position=get_parent().get_node("Ball_collision").global_position
+		velocity = get_parent().get_node("Ball_collision").linear_velocity
 	if(velocity.x>0):
 		# walking Right
 		spriteControl.flip_h = false

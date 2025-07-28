@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://dkuob2gcm3qes"]
 
 [ext_resource type="Texture2D" uid="uid://cv86e3df0j0ih" path="res://Asset/spritesheet/spritesheet-double.png" id="2_sph0h"]
-[ext_resource type="Script" path="res://Level/camera_handler.gd" id="3_nsu8l"]
+[ext_resource type="Script" uid="uid://b4itxnywdwytb" path="res://Level/camera_handler.gd" id="3_nsu8l"]
 [ext_resource type="PackedScene" uid="uid://dku4duhlsp7o0" path="res://Prefab/Player1.tscn" id="4_ueql7"]
 [ext_resource type="PackedScene" uid="uid://dw5wft6rfnxan" path="res://Prefab/Player2.tscn" id="5_n4eh4"]
 [ext_resource type="PackedScene" uid="uid://5mh2os6lt4x3" path="res://Prefab/ball_collision.tscn" id="6_1ve8i"]

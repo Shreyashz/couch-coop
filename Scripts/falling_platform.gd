@@ -2,7 +2,7 @@ extends StaticBody2D
 var falling = false
 var secs = 0
 var pos
-
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 func _ready() -> void:
 	pos = position
 
@@ -16,7 +16,9 @@ func _physics_process(delta: float) -> void:
 		secs +=delta
 		if(secs>=1):
 			self.position.y +=350*delta
+			collision_shape_2d.disabled = true
 		if(secs >=5):
 			self.position = pos
 			falling = false
+			collision_shape_2d.disabled = false
 			secs = 0
