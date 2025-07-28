@@ -54,12 +54,14 @@ func change_2d_scene(new_scene:String, delete:bool = true, keep_running:bool=fal
 	if current_2d_scene.has_meta("LEVEL"):
 		change_gui_scene("res://GUI/InGameUI.tscn")
 
+func load_level(level_no:int):
+	var next_level_path = FILE_BEGIN + str(level_no) + ".tscn"
+	change_2d_scene(next_level_path)
+
 func load_next_level() -> void:
 	if(!first_player_ready):
 		first_player_ready = true
 	else:
 		var current_scene_file = path_current_2d_scene
 		var next_level_number = current_scene_file.to_int() + 1
-		var next_level_path = FILE_BEGIN + str(next_level_number) + ".tscn"
-		print(next_level_path)
-		change_2d_scene(next_level_path)
+		load_level(next_level_number)

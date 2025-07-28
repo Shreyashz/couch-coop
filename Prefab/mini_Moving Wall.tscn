@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://b77k7nodjiotc"]
 
 [ext_resource type="Script" uid="uid://csm0xhyfiapeu" path="res://Scripts/moving_wall.gd" id="1_tuw3x"]
-[ext_resource type="Texture2D" uid="uid://cfqyfegc3anyj" path="res://icon.svg" id="2_orsut"]
+[ext_resource type="Texture2D" uid="uid://cgoa4rgkmctdd" path="res://Asset/sprites/world_tileset.png" id="2_tuw3x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6jp4y"]
-size = Vector2(124, 130)
+size = Vector2(124, 127)
 
 [node name="mini_DaWall" type="CharacterBody2D"]
 collision_mask = 9
@@ -12,8 +12,11 @@ script = ExtResource("1_tuw3x")
 speed = 150.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_orsut")
+scale = Vector2(8.26667, 8.66667)
+texture = ExtResource("2_tuw3x")
+region_enabled = true
+region_rect = Rect2(113, 1, 15, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_6jp4y")

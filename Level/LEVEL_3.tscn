@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://m442mfh70tug"]
+[gd_scene load_steps=15 format=4 uid="uid://m442mfh70tug"]
 
 [ext_resource type="Texture2D" uid="uid://cv86e3df0j0ih" path="res://Asset/spritesheet/spritesheet-double.png" id="1_1poqi"]
 [ext_resource type="Script" uid="uid://b4itxnywdwytb" path="res://Level/camera_handler.gd" id="2_rewlp"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ddfc476drfnts" path="res://Level/NextLevel/next_level2.tscn" id="7_4oicv"]
 [ext_resource type="PackedScene" uid="uid://duu3422xsf7b6" path="res://Prefab/Moving Wall.tscn" id="8_rewlp"]
 [ext_resource type="PackedScene" uid="uid://b77k7nodjiotc" path="res://Prefab/mini_Moving Wall.tscn" id="9_4nvdc"]
+[ext_resource type="PackedScene" uid="uid://byhxdnfw87g66" path="res://Prefab/platformsWithPaths.tscn" id="10_wtu3h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ha26"]
 texture = ExtResource("1_1poqi")
@@ -4887,7 +4888,14 @@ sources/0 = SubResource("TileSetAtlasSource_6ha26")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rewlp"]
 size = Vector2(112, 120)
 
-[node name="LEVEL_T" type="Node2D"]
+[sub_resource type="Curve2D" id="Curve2D_wtu3h"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 199, -93.6364, 21.8182, 93.6364, -21.8182, 546.786, 193.417, 9.06324, 81.2277, -9.06324, -81.2277, 688.283, 51.3333, 113.059, 15.4545, -113.059, -15.4545, 522.529, -88, 93.9143, -14.275, -93.9143, 14.275, -437.631, -89.8333, 3.63, -68.97, -3.63, 68.97, -557.904, 48.5833, -141, 0, 141, 0, -388.107, 199.833, 0, 0, 0, 0, 0, 199)
+}
+point_count = 8
+
+[node name="LEVEL_3" type="Node2D"]
+metadata/LEVEL = 3
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-3, 0)
@@ -4895,8 +4903,8 @@ tile_map_data = PackedByteArray("AAD4/wUAAAAAAAAAAAD5/wUAAAAAAAAAAAD6/wUAAAAAAAA
 tile_set = SubResource("TileSet_dk2iy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(146, 36)
-zoom = Vector2(0.8, 0.8)
+position = Vector2(146, -2)
+zoom = Vector2(0.77, 0.77)
 script = ExtResource("2_rewlp")
 
 [node name="p2_player_body" parent="." instance=ExtResource("3_4nvdc")]
@@ -4910,10 +4918,10 @@ position = Vector2(-751, 549)
 position = Vector2(1146, 0)
 
 [node name="NextLevel1" parent="." instance=ExtResource("6_xw4g3")]
-position = Vector2(-875, -449)
+position = Vector2(1146, -449)
 
 [node name="NextLevel2" parent="." instance=ExtResource("7_4oicv")]
-position = Vector2(1146, -449)
+position = Vector2(-905, -449)
 
 [node name="DaWall" parent="." instance=ExtResource("8_rewlp")]
 position = Vector2(0, 191)
@@ -4935,3 +4943,8 @@ position = Vector2(-521, 191)
 
 [node name="mini_DaWall2" parent="." instance=ExtResource("9_4nvdc")]
 position = Vector2(677, 191)
+
+[node name="Platforms W_Path" parent="." instance=ExtResource("10_wtu3h")]
+position = Vector2(-3, -377)
+scale = Vector2(0.989418, 1.09091)
+curve = SubResource("Curve2D_wtu3h")

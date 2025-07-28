@@ -32,10 +32,7 @@ func _check_path(path:String)->bool:
 
 
 func _on_Load_2d_Scene_pressed() -> void:
-	var result = _check_path(PathTextBox.text)
-	if result:
-		Global.game_controller.change_2d_scene(PathTextBox.text)
-
+	Global.game_controller.load_level(PathTextBox.text.to_int())
 
 func _on_Load_GUI_Scene_pressed() -> void:
 	var result = _check_path(PathTextBox.text)
