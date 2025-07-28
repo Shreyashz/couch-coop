@@ -9,6 +9,7 @@ size = Vector2(124, 255)
 [node name="DaWall" type="CharacterBody2D"]
 collision_mask = 9
 script = ExtResource("1_cbkpt")
+speed = 120.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -61)

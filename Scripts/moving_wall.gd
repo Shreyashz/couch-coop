@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const speed= 100.0
+@export var speed= 100.0
 
 var direction = 1
 
