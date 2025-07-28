@@ -4880,6 +4880,7 @@ physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_6ha26")
 
 [node name="LEVEL_T" type="Node2D"]
+metadata/LEVEL = 0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-3, 0)
