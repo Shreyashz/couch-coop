@@ -7,6 +7,7 @@
 radius = 54.0093
 
 [node name="Snowball" type="RigidBody2D"]
+mass = 0.5
 script = ExtResource("1_yn5rr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

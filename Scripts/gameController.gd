@@ -4,8 +4,9 @@ const FILE_BEGIN = "res://Level/LEVEL_"
 
 @export var world2d:Node2D
 @export var gui:Control
-
-
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+const MAIN_MENU = preload("res://Music and sounds/Main_menu.mp3")
+const SPYPENGUIN = preload("res://Music and sounds/spypenguin.mp3")
 var first_player_ready:bool
 var current_2d_scene:Node2D
 var path_current_2d_scene:String
@@ -14,6 +15,8 @@ var paused:bool
 
 func _ready() -> void:
 	Global.game_controller = self
+	audio_stream_player_2d.stream = MAIN_MENU
+	audio_stream_player_2d.play()
 	Global.game_controller.change_gui_scene("res://GUI/Main_menu.tscn")
 	Global.game_controller.paused = true
 
@@ -57,6 +60,7 @@ func change_2d_scene(new_scene:String, delete:bool = true, keep_running:bool=fal
 func load_level(level_no:int):
 	var next_level_path = FILE_BEGIN + str(level_no) + ".tscn"
 	change_2d_scene(next_level_path)
+	startGameMusic()
 
 func load_next_level() -> void:
 	if(!first_player_ready):
@@ -65,3 +69,8 @@ func load_next_level() -> void:
 		var current_scene_file = path_current_2d_scene
 		var next_level_number = current_scene_file.to_int() + 1
 		load_level(next_level_number)
+
+func startGameMusic():
+	if(audio_stream_player_2d.stream != SPYPENGUIN):
+		audio_stream_player_2d.stream = SPYPENGUIN
+		audio_stream_player_2d.play()

@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 
 func _on_start_pressed() -> void:
 	Global.game_controller.paused = false
+	Global.game_controller.startGameMusic()
 	Global.game_controller.change_2d_scene("res://Level/LEVEL_1.tscn")
 
 

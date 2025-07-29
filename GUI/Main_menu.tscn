@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://npjy5jtlp7ta"]
+[gd_scene load_steps=9 format=3 uid="uid://iwmdjha67ofg"]
 
 [ext_resource type="Script" uid="uid://nk223vigigyo" path="res://Scripts/main_menu.gd" id="1_22bbr"]
 [ext_resource type="FontFile" uid="uid://bqrjk7kleqkfk" path="res://Fonts/Buka Bird.ttf" id="1_lujv5"]

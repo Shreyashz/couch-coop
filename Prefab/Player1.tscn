@@ -120,7 +120,7 @@ scale = Vector2(4.5, 4.5)
 texture = ExtResource("3_77ygc")
 hframes = 7
 vframes = 7
-frame = 8
+frame = 7
 region_rect = Rect2(0, 0, 388, 534)
 
 [node name="water_colission" type="Area2D" parent="."]
@@ -135,5 +135,7 @@ shape = SubResource("CapsuleShape2D_fun7e")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="2jArea"]
 position = Vector2(6.5, 73)
 shape = SubResource("RectangleShape2D_77ygc")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="area_entered" from="2jArea" to="." method="_on_j_area_area_entered"]

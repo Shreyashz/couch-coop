@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://tgw07uvyqflg" path="res://Asset/tileSet/tilesheet_complete.png" id="2_bngr6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_no4jo"]
-size = Vector2(76.9799, 45.2259)
+size = Vector2(127.984, 62.5369)
 
 [sub_resource type="Animation" id="Animation_bngr6"]
 length = 0.001
@@ -46,7 +46,9 @@ _data = {
 }
 
 [node name="Platforms W_Path" type="Path2D" node_paths=PackedStringArray("path", "animationplayer")]
+rotation = 0.015708
 script = ExtResource("1_bngr6")
+loop = false
 path = NodePath("PathFollow2D")
 animationplayer = NodePath("AnimationPlayer")
 
@@ -62,17 +64,18 @@ update_rotation = false
 update_scale = false
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
-position = Vector2(-1.55431e-15, -2.84217e-14)
+position = Vector2(-1.61172e-15, -2.48467e-14)
 rotation = -0.0157882
+scale = Vector2(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
 position = Vector2(-0.284176, 17.9978)
 texture = ExtResource("2_bngr6")
 region_enabled = true
-region_rect = Rect2(512, 384, 68, 50)
+region_rect = Rect2(448.03, 447.895, 128.29, 62.9785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
-position = Vector2(-1.0946, 15.9822)
+position = Vector2(-0.457838, 18.2859)
 shape = SubResource("RectangleShape2D_no4jo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

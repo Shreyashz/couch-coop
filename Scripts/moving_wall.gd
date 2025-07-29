@@ -12,8 +12,11 @@ func move_wall():
 	velocity.x = speed*direction
 
 func reverse_direction():
-	if is_on_wall():
-		direction = -direction
+	for i in get_slide_collision_count():
+		var collider = get_slide_collision(i).get_collider()
+		if collider != null and (collider is StaticBody2D or (collider is CharacterBody2D and (collider.name != "p1_player_body" and collider.name != "p2_player_body"))):
+			direction = -direction
+			break
 
 func _physics_process(delta: float) -> void:
 	add_gravity(delta)

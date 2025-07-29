@@ -7,6 +7,9 @@ var stamina = 150
 var pos=0
 var defaultAnimationScale:float = 1.0
 var pending_unroll:bool = false
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+#PRELOAD SOUNDS
+const JUMP_SOUND = preload("res://Music and sounds/JumpSound.mp3")
 
 @export var WalkScaleAnimation:float = 1.0
 @export var curr_scene:Node2D = null
@@ -64,6 +67,8 @@ func _physics_process(delta: float) -> void:
 		#print("Lol")
 		_complete_unroll()
 	if (Input.is_action_just_pressed(controls.move_up)) and is_on_floor():
+		audio_stream_player_2d.stream = JUMP_SOUND
+		audio_stream_player_2d.play()
 		velocity.y = JUMP_VELOCITY
 	if( Input.is_action_just_released(controls.move_up)) and !is_on_floor() and velocity.y < 0:
 		velocity.y = 0
@@ -122,6 +127,8 @@ func _complete_unroll():
 
 func _on_j_area_area_entered(area: Area2D) -> void:
 	if(area.get_parent().name == "p2_player_body"):
+		audio_stream_player_2d.stream = JUMP_SOUND
+		audio_stream_player_2d.play()
 		velocity.y = JUMP_VELOCITY * 1.5
 
 func _on_stopping_area_entered(area: Area2D) -> void:

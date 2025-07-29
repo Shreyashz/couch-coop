@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	timer+=delta
-	if(timer >3):
+	if(timer >4):
 		timer = 0
 		var new_ball = SNOWBALL.instantiate()
 		add_child(new_ball)

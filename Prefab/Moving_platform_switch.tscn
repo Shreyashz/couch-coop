@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdvv8q2xvdujt"]
+
+[ext_resource type="Texture2D" uid="uid://tgw07uvyqflg" path="res://Asset/tileSet/tilesheet_complete.png" id="1_w2d77"]
+[ext_resource type="Script" uid="uid://g72i22tt0xd1" path="res://Shaders/Activate_MovingPlatform.gd" id="2_fqdur"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxuk8"]
+size = Vector2(42, 24)
+
+[node name="Moving_platform_switch" type="Sprite2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_w2d77")
+region_enabled = true
+region_rect = Rect2(775, 483, 50, 29)
+script = ExtResource("2_fqdur")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_hxuk8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
