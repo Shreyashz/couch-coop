@@ -15,9 +15,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_8ja3f"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -75.7079, 27.9717, -6.57056, -68.1052, 6.57056, 68.1052, -63.0389, 189.014, -46.2461, -2.57391, 46.2461, 2.57391, 6.20932, 267.936, 0, 0, 0, 0, 62.2127, 204.048, 0, 0, 0, 0, 70.4312, 26.897, 0.742956, 47.2942, -0.742956, -47.2942, 71.7393, -208.153, 22.4818, 0.483685, -22.4818, -0.483685, 0.601334, -280.044, 0.104694, -44.9725, -0.104694, 44.9725, -81.1004, -211.216, 0, 0, 0, 0, -75.7079, 27.9717)
+"points": PackedVector2Array(0, 0, 0, 0, -71.0065, 211.715, 0, 0, 0, 0, -71.7722, -406.416)
 }
-point_count = 9
+point_count = 2
 
 [node name="LEVEL_6" type="Node2D"]
 metadata/LEVEL = 6
@@ -36,7 +36,6 @@ tile_set = ExtResource("1_c5b0k")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(122, 36)
-zoom = Vector2(0.5, 0.5)
 script = ExtResource("2_okfob")
 camera_zoom = Vector2(0.5, 0.5)
 
@@ -63,8 +62,8 @@ position = Vector2(255, -843)
 position = Vector2(52, -495)
 scale = Vector2(1, 0.902813)
 curve = SubResource("Curve2D_8ja3f")
-loop = true
 speed = 3.0
+speed_scale = 0.5
 Stopped = true
 
 [node name="OneWayPlatform" parent="." instance=ExtResource("10_xui6b")]

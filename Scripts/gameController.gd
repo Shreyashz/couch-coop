@@ -1,24 +1,31 @@
 class_name gameController extends Node
 
 const FILE_BEGIN = "res://Level/LEVEL_"
+const mainmenu_path = "res://GUI/Main_menu.tscn"
 
 @export var world2d:Node2D
 @export var gui:Control
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-const MAIN_MENU = preload("res://Music and sounds/Main_menu.mp3")
-const SPYPENGUIN = preload("res://Music and sounds/spypenguin.mp3")
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $MusicStreamPlayer2D
+@onready var SFX_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+const JUMP_SOUND = preload("res://Music and sounds/JumpSound.mp3")
 var first_player_ready:bool
 var current_2d_scene:Node2D
 var path_current_2d_scene:String
 var current_gui_scene:Control
+var curr_gui_path:String
 var paused:bool
 
 func _ready() -> void:
 	Global.game_controller = self
-	audio_stream_player_2d.stream = MAIN_MENU
-	audio_stream_player_2d.play()
 	Global.game_controller.change_gui_scene("res://GUI/Main_menu.tscn")
 	Global.game_controller.paused = true
+	
+
+func play_sfx(sfx:String)-> void:
+	match sfx:
+		"jump":
+			audio_stream_player_2d.stream = JUMP_SOUND
+			audio_stream_player_2d.play()
 
 func pause():
 	Global.game_controller.paused = true
@@ -40,6 +47,9 @@ func change_gui_scene(new_scene:String, delete:bool = true, keep_running:bool=fa
 	if current_gui_scene:
 		new.set_meta("previous", current_gui_scene.scene_file_path)
 	current_gui_scene = new
+	if new_scene == mainmenu_path:
+		audio_stream_player_2d.stop()
+	curr_gui_path = new_scene
 
 func change_2d_scene(new_scene:String, delete:bool = true, keep_running:bool=false)->void:
 	if current_2d_scene != null:
@@ -71,6 +81,4 @@ func load_next_level() -> void:
 		load_level(next_level_number)
 
 func startGameMusic():
-	if(audio_stream_player_2d.stream != SPYPENGUIN):
-		audio_stream_player_2d.stream = SPYPENGUIN
-		audio_stream_player_2d.play()
+	audio_stream_player_2d.play()
