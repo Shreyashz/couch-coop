@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://iwmdjha67ofg"]
+[gd_scene load_steps=9 format=3 uid="uid://iwmdjha67ofg"]
 
 [ext_resource type="Script" uid="uid://nk223vigigyo" path="res://Scripts/main_menu.gd" id="1_22bbr"]
 [ext_resource type="FontFile" uid="uid://bqrjk7kleqkfk" path="res://Fonts/Buka Bird.ttf" id="1_lujv5"]
 [ext_resource type="FontFile" uid="uid://dl53om4vhamg0" path="res://Fonts/Heyam.ttf" id="1_mo4ht"]
-[ext_resource type="AudioStream" uid="uid://cpm45ktu846kh" path="res://Music and sounds/Main_menu.mp3" id="4_xpoiq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sdc87"]
 
@@ -133,11 +132,6 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Penguins Escape"
 label_settings = SubResource("LabelSettings_sdc87")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_xpoiq")
-autoplay = true
-bus = &"Menu"
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_options_pressed"]

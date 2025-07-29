@@ -10,6 +10,7 @@ extends Path2D
 var cur_speed
 
 func _ready() -> void:
+	cur_speed = speed
 	if not loop:
 		print("Lol")
 		animationplayer.pause()

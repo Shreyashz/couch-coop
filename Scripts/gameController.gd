@@ -24,8 +24,8 @@ func _ready() -> void:
 func play_sfx(sfx:String)-> void:
 	match sfx:
 		"jump":
-			audio_stream_player_2d.stream = JUMP_SOUND
-			audio_stream_player_2d.play()
+			SFX_stream_player.stream = JUMP_SOUND
+			SFX_stream_player.play()
 
 func pause():
 	Global.game_controller.paused = true
@@ -48,7 +48,7 @@ func change_gui_scene(new_scene:String, delete:bool = true, keep_running:bool=fa
 		new.set_meta("previous", current_gui_scene.scene_file_path)
 	current_gui_scene = new
 	if new_scene == mainmenu_path:
-		audio_stream_player_2d.stop()
+		audio_stream_player_2d.playing = false
 	curr_gui_path = new_scene
 
 func change_2d_scene(new_scene:String, delete:bool = true, keep_running:bool=false)->void:
@@ -81,4 +81,7 @@ func load_next_level() -> void:
 		load_level(next_level_number)
 
 func startGameMusic():
-	audio_stream_player_2d.play()
+	if(!audio_stream_player_2d.playing):
+		audio_stream_player_2d.playing = true
+	else:
+		audio_stream_player_2d.play()

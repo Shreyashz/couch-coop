@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b13oojbbbtf8a"]
+[gd_scene load_steps=5 format=3 uid="uid://b13oojbbbtf8a"]
 
 [ext_resource type="Script" uid="uid://btp6j744kjfeb" path="res://Scripts/gameController.gd" id="1_a5dtb"]
 [ext_resource type="PackedScene" uid="uid://cd28mxxi7h5i4" path="res://Prefab/spalsh_screen_manager.tscn" id="2_uynoa"]
 [ext_resource type="AudioStream" uid="uid://kd6vbcy4jsde" path="res://Music and sounds/spypenguin.mp3" id="3_uynoa"]
+[ext_resource type="AudioStream" uid="uid://cpm45ktu846kh" path="res://Music and sounds/Main_menu.mp3" id="4_vqe74"]
 
 [node name="GameController" type="Node" node_paths=PackedStringArray("world2d", "gui")]
 script = ExtResource("1_a5dtb")
@@ -23,10 +24,13 @@ size_flags_vertical = 3
 
 [node name="MusicStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_uynoa")
-volume_db = -25.0
 autoplay = true
 bus = &"Music"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-volume_db = -35.619
 bus = &"SFX"
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_vqe74")
+autoplay = true
+bus = &"Menu"
