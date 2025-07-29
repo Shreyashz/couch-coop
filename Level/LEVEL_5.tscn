@@ -18,7 +18,7 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_eupnj"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -132, -37, 0, 0, 0, 0, -140, -362)
+"points": PackedVector2Array(0, 0, 0, 0, -130.644, -39.9529, 0, 0, 0, 0, -140, -362)
 }
 point_count = 2
 
