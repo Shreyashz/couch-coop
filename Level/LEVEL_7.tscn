@@ -76,7 +76,7 @@ switchable_Wall = NodePath("../Toggable")
 position = Vector2(258, 35)
 curve = SubResource("Curve2D_dprr3")
 loop = true
-speed = 4.0
+speed = 4.5
 speed_scale = 3.0
 Stopped = true
 

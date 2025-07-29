@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cvg4v3otkvwsp"]
+[gd_scene load_steps=14 format=4 uid="uid://cvg4v3otkvwsp"]
 
 [ext_resource type="TileSet" uid="uid://buyducg1cxv74" path="res://Asset/tileSet/FinalTileSet.tres" id="1_c5b0k"]
 [ext_resource type="Script" uid="uid://b4itxnywdwytb" path="res://Level/camera_handler.gd" id="2_okfob"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://byhxdnfw87g66" path="res://Prefab/platformsWithPaths.tscn" id="9_c5b0k"]
 [ext_resource type="PackedScene" uid="uid://bwxy4axydb8e4" path="res://Prefab/one_way_platform.tscn" id="10_xui6b"]
 [ext_resource type="PackedScene" uid="uid://bdvv8q2xvdujt" path="res://Prefab/Moving_platform_switch.tscn" id="11_xui6b"]
+[ext_resource type="PackedScene" uid="uid://cy24awk5vl72a" path="res://Prefab/fallingPlatform.tscn" id="12_3csi7"]
 
 [sub_resource type="Curve2D" id="Curve2D_8ja3f"]
 _data = {
@@ -72,3 +73,6 @@ position = Vector2(-579, 306)
 [node name="Switch" parent="." node_paths=PackedStringArray("platform") instance=ExtResource("11_xui6b")]
 position = Vector2(-835, 99)
 platform = NodePath("../Platforms W_Path")
+
+[node name="Falling_Platform" parent="." instance=ExtResource("12_3csi7")]
+position = Vector2(-578, 36)
