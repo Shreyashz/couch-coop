@@ -11,11 +11,14 @@ var cur_speed
 
 func _ready() -> void:
 	cur_speed = speed
-	if not loop:
+	if not loop and not Stopped:
+		animationplayer.play("move")
+		animationplayer.speed_scale = speed_scale
+		set_process(false)
+	if Stopped:
 		print("Lol")
 		animationplayer.pause()
 		animationplayer.speed_scale = speed_scale
-		set_process(false)
 
 func _move() -> void:
 	animationplayer.play("move")
@@ -25,4 +28,5 @@ func _stop() -> void:
 	cur_speed = 0.0
 
 func _process(delta: float) -> void:
-	path.progress += cur_speed
+	if(!Stopped):
+		path.progress += cur_speed
