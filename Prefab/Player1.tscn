@@ -120,7 +120,7 @@ scale = Vector2(4.5, 4.5)
 texture = ExtResource("3_77ygc")
 hframes = 7
 vframes = 7
-frame = 7
+frame = 10
 region_rect = Rect2(0, 0, 388, 534)
 
 [node name="water_colission" type="Area2D" parent="."]

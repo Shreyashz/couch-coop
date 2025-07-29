@@ -7,6 +7,7 @@ const mainmenu_path = "res://GUI/Main_menu.tscn"
 @export var gui:Control
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $MusicStreamPlayer2D
 @onready var SFX_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var menu_stream_player_2d_2: AudioStreamPlayer2D = $MenuStreamPlayer2D2
 const JUMP_SOUND = preload("res://Music and sounds/JumpSound.mp3")
 var first_player_ready:bool
 var current_2d_scene:Node2D
@@ -48,6 +49,7 @@ func change_gui_scene(new_scene:String, delete:bool = true, keep_running:bool=fa
 		new.set_meta("previous", current_gui_scene.scene_file_path)
 	current_gui_scene = new
 	if new_scene == mainmenu_path:
+		menu_stream_player_2d_2.playing = true
 		audio_stream_player_2d.playing = false
 	curr_gui_path = new_scene
 
@@ -82,6 +84,5 @@ func load_next_level() -> void:
 
 func startGameMusic():
 	if(!audio_stream_player_2d.playing):
+		menu_stream_player_2d_2.playing = false
 		audio_stream_player_2d.playing = true
-	else:
-		audio_stream_player_2d.play()

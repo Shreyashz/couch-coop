@@ -30,7 +30,7 @@ bus = &"Music"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 bus = &"SFX"
 
-[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+[node name="MenuStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_vqe74")
 autoplay = true
 bus = &"Menu"
