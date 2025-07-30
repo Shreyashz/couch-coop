@@ -8,3 +8,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _process(delta: float) -> void:
 	if(animation == "Activate" && frame == 3):
 		body2D.velocity.y = -1200
+		body2D.set_meta("launch", true)

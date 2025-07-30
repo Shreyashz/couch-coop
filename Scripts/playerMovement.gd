@@ -29,8 +29,6 @@ func _ready() -> void:
 
 
 func apply_gravity(delta):
-	if(name == "p2_player_body"):
-		can_roll=true
 	# Add the gravity.
 	if not is_on_floor() && !swimming:
 		velocity += get_gravity() * delta
@@ -60,15 +58,18 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
-	if(pending_unroll and is_on_floor()):
+	var on_floor = is_on_floor()
+	if(get_meta("launch") and on_floor):
+		set_meta("launch", false)
+	if(pending_unroll and on_floor):
 		#print("Lol")
 		_complete_unroll()
-	if (Input.is_action_just_pressed(controls.move_up)) and is_on_floor():
+	if (Input.is_action_just_pressed(controls.move_up)) and on_floor:
 		Global.game_controller.play_sfx("jump")
 		velocity.y = JUMP_VELOCITY
-	if( Input.is_action_just_released(controls.move_up)) and !is_on_floor() and velocity.y < 0:
+	if( Input.is_action_just_released(controls.move_up)) and !on_floor and velocity.y < 0:
 		velocity.y = 0
-	if (Input.is_action_just_pressed(controls.move_up)) and !is_on_floor() and swimming:
+	if (Input.is_action_just_pressed(controls.move_up)) and !on_floor and swimming:
 		velocity.y = JUMP_VELOCITY
 	if(Input.is_action_just_pressed(controls.move_down) and swimming):
 		velocity.y = -JUMP_VELOCITY
@@ -122,7 +123,8 @@ func _complete_unroll():
 		_unroll_now()
 
 func _on_j_area_area_entered(area: Area2D) -> void:
-	if(area.get_parent().name == "p2_player_body"):
+	var parent= area.get_parent()
+	if(parent.name == "p2_player_body") and !parent.get_meta("launch"):
 		Global.game_controller.play_sfx("jump")
 		velocity.y = JUMP_VELOCITY * 1.5
 
