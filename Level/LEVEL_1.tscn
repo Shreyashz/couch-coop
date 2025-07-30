@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://cubn3tv08mftm"]
+[gd_scene load_steps=8 format=4 uid="uid://cubn3tv08mftm"]
 
 [ext_resource type="TileSet" uid="uid://buyducg1cxv74" path="res://Asset/tileSet/FinalTileSet.tres" id="1_x1sp2"]
 [ext_resource type="PackedScene" uid="uid://05n0tpcx2s88" path="res://Level/NextLevel/next_level1.tscn" id="2_4jmyp"]
+[ext_resource type="Script" uid="uid://b4itxnywdwytb" path="res://Level/camera_handler.gd" id="2_dfj7q"]
 [ext_resource type="PackedScene" uid="uid://dku4duhlsp7o0" path="res://Prefab/Player1.tscn" id="2_ebo35"]
 [ext_resource type="PackedScene" uid="uid://dw5wft6rfnxan" path="res://Prefab/Player2.tscn" id="3_4jmyp"]
 [ext_resource type="PackedScene" uid="uid://5mh2os6lt4x3" path="res://Prefab/ball_collision.tscn" id="4_x1sp2"]
@@ -22,6 +23,7 @@ tile_map_data = PackedByteArray("AAAEAD8AAQAKAAoAAAAMAD8AAQAKAAoAAAAOAD4AAQAKAAo
 tile_set = ExtResource("1_x1sp2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("2_dfj7q")
 
 [node name="p1_player_body" parent="." instance=ExtResource("2_ebo35")]
 position = Vector2(-751, 60)

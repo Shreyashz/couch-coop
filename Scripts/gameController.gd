@@ -35,6 +35,9 @@ func unpause():
 	Global.game_controller.paused = false
 	current_2d_scene.process_mode = PROCESS_MODE_INHERIT
 
+func change_guiPos(newPosition:Vector2):
+	gui.global_position = newPosition
+
 func change_gui_scene(new_scene:String, delete:bool = true, keep_running:bool=false)->void:
 	if current_gui_scene != null:
 		if delete:
@@ -48,8 +51,10 @@ func change_gui_scene(new_scene:String, delete:bool = true, keep_running:bool=fa
 	if current_gui_scene:
 		new.set_meta("previous", current_gui_scene.scene_file_path)
 	current_gui_scene = new
-	if new_scene == mainmenu_path:
+	if new_scene == mainmenu_path && !menu_stream_player_2d_2.playing:
 		menu_stream_player_2d_2.playing = true
+		audio_stream_player_2d.playing = false
+	elif new_scene == mainmenu_path:
 		audio_stream_player_2d.playing = false
 	curr_gui_path = new_scene
 

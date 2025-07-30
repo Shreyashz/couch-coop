@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://bm3o24ytvd3s8"]
+[gd_scene load_steps=2 format=3 uid="uid://bm3o24ytvd3s8"]
+
+[ext_resource type="Script" uid="uid://b4itxnywdwytb" path="res://Level/camera_handler.gd" id="1_44tea"]
 
 [node name="MainMenuBg" type="Node2D"]
 metadata/LEVEL = 0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("1_44tea")
