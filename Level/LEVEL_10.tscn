@@ -26,7 +26,7 @@ _data = {
 point_count = 9
 
 [node name="LEVEL_10" type="Node2D"]
-metadata/LEVEL = 0
+metadata/LEVEL = 10
 metadata/cam_pos = Vector2(0, 0)
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
@@ -41,7 +41,8 @@ tile_map_data = PackedByteArray("AAD4/wUAAAACAAYAAAD5/wUAAAACAAYAAAD6/wUAAAACAAY
 tile_set = ExtResource("1_572ki")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.8, 0.8)
+position = Vector2(0, -4)
+zoom = Vector2(0.76, 0.76)
 script = ExtResource("2_8ib5v")
 camera_zoom = Vector2(0.8, 0.8)
 
@@ -59,7 +60,7 @@ collision_layer = 5
 position = Vector2(-409, -3432)
 
 [node name="NextLevel2" parent="." instance=ExtResource("7_fu4qy")]
-position = Vector2(-409, -3432)
+position = Vector2(-129, -3432)
 
 [node name="OneWayPlatform" parent="." instance=ExtResource("8_vm7d6")]
 position = Vector2(-446, 50)

@@ -2,9 +2,13 @@ extends RigidBody2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var ray_cast_2d_2: RayCast2D = $RayCast2D2
 @export var limit_height : int
+@export var sprite: Sprite2D
 var timer = 0
 var character_timer = 0
 var dir = 1
+func _ready() -> void:
+	sprite.region_rect.position.x += 65*randi_range(0, 2)
+
 func _physics_process(delta: float) -> void:
 	linear_velocity.x = 300 * dir
 	ray_cast_2d.global_rotation = 0.0

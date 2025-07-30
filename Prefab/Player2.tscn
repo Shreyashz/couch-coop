@@ -91,7 +91,6 @@ controls = ExtResource("2_iuxfw")
 spriteControl = NodePath("playerBody_Sprite")
 animationTree = NodePath("AnimationTree")
 metadata/playerIndex = 1
-metadata/launch = false
 
 [node name="playerBody_Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0.166667, -0.241997)

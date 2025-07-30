@@ -14,6 +14,7 @@ var pending_unroll:bool = false
 @export var spriteControl:Sprite2D = null
 @export var animationTree:AnimationTree = null
 
+var waiting_for_ground:bool = false
 var pa_abajo = false
 #little variables we need to check things, mostly flags
 const SPEED = 400.0
@@ -59,8 +60,6 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	var on_floor = is_on_floor()
-	if(get_meta("launch") and on_floor):
-		set_meta("launch", false)
 	if(pending_unroll and on_floor):
 		#print("Lol")
 		_complete_unroll()
@@ -124,7 +123,7 @@ func _complete_unroll():
 
 func _on_j_area_area_entered(area: Area2D) -> void:
 	var parent= area.get_parent()
-	if(parent.name == "p2_player_body") and !parent.get_meta("launch"):
+	if parent.name == "p2_player_body":
 		Global.game_controller.play_sfx("jump")
 		velocity.y = JUMP_VELOCITY * 1.5
 
@@ -133,9 +132,5 @@ func _on_stopping_area_entered(area: Area2D) -> void:
 		var direction = (global_position - get_parent().get_node("Ball_collision").global_position).normalized()
 		get_parent().get_node("Ball_collision").apply_force(-direction * 10000)
 
-
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	for i in get_parent().get_children():
-		velocity.x = 1000
-		if(i is Camera2D):
-			i.move()
+	Global.game_controller.curr_SC_Cam.move()

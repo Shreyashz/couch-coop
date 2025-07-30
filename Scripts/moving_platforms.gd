@@ -28,5 +28,7 @@ func _stop() -> void:
 	cur_speed = 0.0
 
 func _process(delta: float) -> void:
-	if(!Stopped):
+	if(!Stopped and loop):
 		path.progress += cur_speed
+	else:
+		animationplayer.speed_scale = speed_scale

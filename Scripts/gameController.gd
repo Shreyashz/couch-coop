@@ -15,6 +15,7 @@ var path_current_2d_scene:String
 var current_gui_scene:Control
 var curr_gui_path:String
 var paused:bool
+var curr_SC_Cam:Camera2D
 
 func _ready() -> void:
 	Global.game_controller = self
@@ -73,7 +74,15 @@ func change_2d_scene(new_scene:String, delete:bool = true, keep_running:bool=fal
 	first_player_ready = false
 	if current_2d_scene.has_meta("LEVEL"):
 		change_gui_scene("res://GUI/InGameUI.tscn")
+	for i in current_2d_scene.get_children():
+		#velocity.x = 1000
+		if(i is Camera2D):
+			curr_SC_Cam = i
 
+func _check_positions()->bool:
+	if(current_2d_scene.get_meta("l_cam")<current_2d_scene.get_meta("l_pl1") and current_2d_scene.get_meta("l_cam")<current_2d_scene.get_meta("l_pl2") and current_2d_scene.get_meta("l_pl2")==current_2d_scene.get_meta("l_pl1")):
+		return true
+	return false
 func load_level(level_no:int):
 	var next_level_path = FILE_BEGIN + str(level_no) + ".tscn"
 	change_2d_scene(next_level_path)
