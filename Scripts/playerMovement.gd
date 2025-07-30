@@ -130,3 +130,10 @@ func _on_stopping_area_entered(area: Area2D) -> void:
 	if(area.get_parent().name == "p1_player_body"):
 		var direction = (global_position - get_parent().get_node("Ball_collision").global_position).normalized()
 		get_parent().get_node("Ball_collision").apply_force(-direction * 10000)
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	for i in get_parent().get_children():
+		velocity.x = 1000
+		if(i is Camera2D):
+			i.move()

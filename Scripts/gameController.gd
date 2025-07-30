@@ -86,3 +86,7 @@ func startGameMusic():
 	if(!audio_stream_player_2d.playing):
 		menu_stream_player_2d_2.playing = false
 		audio_stream_player_2d.playing = true
+func move_music():
+	audio_stream_player_2d.position.y -=1400
+	SFX_stream_player.position.y -=1400
+	menu_stream_player_2d_2.position.y -=1400

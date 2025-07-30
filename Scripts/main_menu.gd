@@ -22,3 +22,7 @@ func _on_options_pressed() -> void:
 
 func _on_Exit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_Options_Game_pressed() -> void:
+	Global.game_controller.change_gui_scene("res://GUI/options_menu.tscn")

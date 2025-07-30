@@ -1,7 +1,7 @@
 extends RigidBody2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var ray_cast_2d_2: RayCast2D = $RayCast2D2
-var limit_height
+@export var limit_height : int
 var timer = 0
 var character_timer = 0
 var dir = 1
