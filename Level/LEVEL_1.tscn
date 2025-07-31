@@ -1,12 +1,20 @@
-[gd_scene load_steps=8 format=4 uid="uid://cubn3tv08mftm"]
+[gd_scene load_steps=12 format=4 uid="uid://cubn3tv08mftm"]
 
 [ext_resource type="TileSet" uid="uid://buyducg1cxv74" path="res://Asset/tileSet/FinalTileSet.tres" id="1_x1sp2"]
 [ext_resource type="PackedScene" uid="uid://05n0tpcx2s88" path="res://Level/NextLevel/next_level1.tscn" id="2_4jmyp"]
 [ext_resource type="Script" uid="uid://b4itxnywdwytb" path="res://Level/camera_handler.gd" id="2_dfj7q"]
 [ext_resource type="PackedScene" uid="uid://dku4duhlsp7o0" path="res://Prefab/Player1.tscn" id="2_ebo35"]
 [ext_resource type="PackedScene" uid="uid://dw5wft6rfnxan" path="res://Prefab/Player2.tscn" id="3_4jmyp"]
+[ext_resource type="LabelSettings" uid="uid://xxhdf542ijo0" path="res://Fonts/LabelSettings.tres" id="3_hqoi8"]
+[ext_resource type="Script" uid="uid://ceybmnfcgu0uj" path="res://Scripts/Tuts.gd" id="3_jqmrk"]
 [ext_resource type="PackedScene" uid="uid://5mh2os6lt4x3" path="res://Prefab/ball_collision.tscn" id="4_x1sp2"]
 [ext_resource type="PackedScene" uid="uid://ddfc476drfnts" path="res://Level/NextLevel/next_level2.tscn" id="5_dxnhx"]
+
+[sub_resource type="Gradient" id="Gradient_dfj7q"]
+colors = PackedColorArray(0, 0, 0, 0.607843, 1, 1, 1, 0.431373)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hqoi8"]
+gradient = SubResource("Gradient_dfj7q")
 
 [node name="Level1" type="Node2D"]
 metadata/zoomlevel = Vector2(0.5, 0.5)
@@ -25,6 +33,70 @@ tile_set = ExtResource("1_x1sp2")
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_dfj7q")
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_jqmrk")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = -988.0
+offset_top = 589.0
+offset_right = 176.0
+offset_bottom = 2556.0
+rotation = -1.57079
+texture = SubResource("GradientTexture1D_hqoi8")
+
+[node name="Label3" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -881.0
+offset_top = -400.0
+offset_right = -95.0
+offset_bottom = -247.0
+text = "Welcome,  collect these 
+to move on to next level"
+label_settings = ExtResource("3_hqoi8")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = -206.0
+offset_right = 826.0
+offset_bottom = -53.0
+text = "WASD for tall penguin
+Arrow keys for Little one "
+label_settings = ExtResource("3_hqoi8")
+
+[node name="Label4" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -22.0
+offset_top = 62.0
+offset_right = 907.0
+offset_bottom = 215.0
+text = "use  ? key for magic Little one 
+Jump on little one to see magic"
+label_settings = ExtResource("3_hqoi8")
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = -299.0
+offset_right = 277.0
+offset_bottom = -224.0
+text = "use"
+label_settings = ExtResource("3_hqoi8")
+
+[node name="Label5" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 440.0
+offset_right = 911.0
+offset_bottom = 515.0
+text = "to exit Enter"
+label_settings = ExtResource("3_hqoi8")
+
 [node name="p1_player_body" parent="." instance=ExtResource("2_ebo35")]
 position = Vector2(-751, 60)
 
@@ -32,10 +104,10 @@ position = Vector2(-751, 60)
 position = Vector2(-640, 75)
 scale = Vector2(1.5, 1.5)
 
-[node name="Ball_collision" parent="." instance=ExtResource("4_x1sp2")]
-
 [node name="NextLevel1" parent="." instance=ExtResource("2_4jmyp")]
 position = Vector2(-808, -327)
 
 [node name="NextLevel2" parent="." instance=ExtResource("5_dxnhx")]
 position = Vector2(-578, -327)
+
+[node name="Ball_collision" parent="." instance=ExtResource("4_x1sp2")]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://dscrdossufa5t"]
+[gd_scene load_steps=15 format=4 uid="uid://dscrdossufa5t"]
 
 [ext_resource type="TileSet" uid="uid://buyducg1cxv74" path="res://Asset/tileSet/FinalTileSet.tres" id="1_hxhl0"]
+[ext_resource type="Script" uid="uid://bl834dpwmdrgb" path="res://Scripts/level_11.gd" id="1_ui8r1"]
 [ext_resource type="Script" uid="uid://b4itxnywdwytb" path="res://Level/camera_handler.gd" id="2_0fou6"]
 [ext_resource type="FontFile" uid="uid://dl53om4vhamg0" path="res://Fonts/Heyam.ttf" id="3_ui8r1"]
 [ext_resource type="PackedScene" uid="uid://dw5wft6rfnxan" path="res://Prefab/Player2.tscn" id="3_wjshw"]
@@ -53,6 +54,7 @@ shadow_size = 5
 shadow_offset = Vector2(3, 3)
 
 [node name="LEVEL_T" type="Node2D"]
+script = ExtResource("1_ui8r1")
 metadata/LEVEL = 0
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
@@ -124,3 +126,5 @@ position = Vector2(663, -1008)
 
 [node name="NextLevel2" parent="." instance=ExtResource("7_oscss")]
 position = Vector2(329, -1008)
+
+[connection signal="pressed" from="Camera2D/Button2" to="." method="_on_Exit_2_Menu_pressed"]

@@ -135,6 +135,7 @@ shape = SubResource("RectangleShape2D_6dunh")
 [node name="Platforms W_Path" parent="." instance=ExtResource("14_6dunh")]
 position = Vector2(-494, -1825)
 curve = SubResource("Curve2D_bgj5l")
+loop = true
 
 [node name="ChBOdymini_DaWall" parent="." instance=ExtResource("16_jlfvg")]
 position = Vector2(-502, -1219)
@@ -364,7 +365,9 @@ platform = NodePath("../Platforms W_Path2")
 [node name="Platforms W_Path2" parent="." instance=ExtResource("14_6dunh")]
 position = Vector2(-958, -4482)
 curve = SubResource("Curve2D_erwsj")
-speed = 6.0
+loop = true
+speed = 3.0
+speed_scale = 0.5
 Stopped = true
 
 [node name="OneWayPlatform11" parent="." instance=ExtResource("8_vm7d6")]
