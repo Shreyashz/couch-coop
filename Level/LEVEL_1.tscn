@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dku4duhlsp7o0" path="res://Prefab/Player1.tscn" id="2_ebo35"]
 [ext_resource type="PackedScene" uid="uid://dw5wft6rfnxan" path="res://Prefab/Player2.tscn" id="3_4jmyp"]
 [ext_resource type="LabelSettings" uid="uid://xxhdf542ijo0" path="res://Fonts/LabelSettings.tres" id="3_hqoi8"]
-[ext_resource type="Script" uid="uid://ceybmnfcgu0uj" path="res://Scripts/Tuts.gd" id="3_jqmrk"]
+[ext_resource type="Script" path="res://Scripts/Tuts.gd" id="3_jqmrk"]
 [ext_resource type="PackedScene" uid="uid://5mh2os6lt4x3" path="res://Prefab/ball_collision.tscn" id="4_x1sp2"]
 [ext_resource type="PackedScene" uid="uid://ddfc476drfnts" path="res://Level/NextLevel/next_level2.tscn" id="5_dxnhx"]
 

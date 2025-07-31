@@ -101,9 +101,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			animationTree.set("parameters/Transition/transition_request", "Idle")
 			animationTree.set("parameters/TimeScale/scale", defaultAnimationScale)
-			var platform_velocity
+			var platform_velocity = Vector2(0,0)
 			if(platform_raycast.is_colliding() and !platform_raycast.get_collider() is TileMapLayer and !platform_raycast.get_collider() is RigidBody2D and !platform_raycast.get_collider() is StaticBody2D):
-				platform_velocity = platform_raycast.get_collider().velocity
+				if(platform_raycast.get_collider() != null):
+					platform_velocity = platform_raycast.get_collider().velocity
 			else:
 				platform_velocity = Vector2(0,0)
 			if(platform_velocity != Vector2(0,0)):
