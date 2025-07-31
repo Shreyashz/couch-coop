@@ -16,9 +16,9 @@ size = Vector2(112, 120)
 
 [sub_resource type="Curve2D" id="Curve2D_wtu3h"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 30.0477, 159.091, -93.6364, 21.8182, 93.6364, -21.8182, 544.396, 149.93, 9.06324, 81.2277, -9.06324, -81.2277, 688.283, 51.3333, 113.059, 15.4545, -113.059, -15.4545, 522.529, -88, 93.9143, -14.275, -93.9143, 14.275, -437.631, -89.8333, 3.63, -68.97, -3.63, 68.97, -557.904, 48.5833, -141, 0, 141, 0, -391.408, 162.346, 0, 0, 0, 0, 30.0477, 159.091)
+"points": PackedVector2Array(0, 0, 0, 0, 663.949, -390.477, 0, 0, 0, 0, 663.949, -390.477, 0, 0, 0, 0, 424.413, -231.695, 0, 0, 0, 0, -248.677, -232.123, 0, 0, 0, 0, -248.677, -232.123, 0, 0, 0, 0, -516.063, -381.941, 0, 0, 0, 0, -516.063, -381.941)
 }
-point_count = 8
+point_count = 7
 
 [node name="LEVEL_3" type="Node2D"]
 metadata/LEVEL = 3
@@ -78,8 +78,4 @@ position = Vector2(-521, 191)
 position = Vector2(677, 191)
 
 [node name="Platforms W_Path" parent="." instance=ExtResource("10_wtu3h")]
-position = Vector2(-3, -377)
-scale = Vector2(0.989418, 1.09091)
 curve = SubResource("Curve2D_wtu3h")
-loop = true
-speed_scale = 0.4

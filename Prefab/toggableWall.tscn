@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dvvtc8nxepife"]
 
 [ext_resource type="Script" uid="uid://cu1c58bp3oxkw" path="res://togglable_Wall.gd" id="1_0s2a0"]
-[ext_resource type="Texture2D" uid="uid://tgw07uvyqflg" path="res://Asset/tileSet/tilesheet_complete.png" id="2_1e7w5"]
+[ext_resource type="Texture2D" uid="uid://bqsark4k5ii2c" path="res://Asset/spritesheet/tiles.png" id="2_0s2a0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mfd0t"]
 size = Vector2(128, 128)
@@ -10,10 +10,10 @@ size = Vector2(128, 128)
 script = ExtResource("1_0s2a0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("2_1e7w5")
+scale = Vector2(4, 4)
+texture = ExtResource("2_0s2a0")
 region_enabled = true
-region_rect = Rect2(0, 384, 64, 64)
+region_rect = Rect2(246, 53, 32, 34)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mfd0t")

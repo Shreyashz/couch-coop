@@ -29,6 +29,7 @@ window/stretch/mode="canvas_items"
 
 Interactable="Items that can be interacted with"
 Player=""
+Moving_wall="For_riding"
 
 [input]
 

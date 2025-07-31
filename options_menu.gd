@@ -3,6 +3,7 @@ extends Control
 @onready var music_slider: HSlider = $VBoxContainer/MusicSlider
 @onready var sfx_slider: HSlider = $VBoxContainer/SfxSlider
 @onready var menu_slider: HSlider = $VBoxContainer/MenuSlider
+var previous_route
 
 func _ready() -> void:
 	master_slider.value = db_to_linear(AudioServer.get_bus_volume_db(0))
@@ -27,4 +28,5 @@ func _on_menu_slider_value_changed(value: float) -> void:
 
 
 func _on_button_2_pressed() -> void:
-	Global.game_controller.change_gui_scene("res://GUI/Main_menu.tscn")
+	Global.game_controller.change_gui_scene(previous_route)
+	Global.game_controller.play_sfx("Click")

@@ -5,6 +5,7 @@ var can_roll = false
 var active_roll = false
 var stamina = 150
 var pos=0
+@onready var platform_raycast: RayCast2D = $Platform_raycast
 var defaultAnimationScale:float = 1.0
 var pending_unroll:bool = false
 
@@ -74,6 +75,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = -JUMP_VELOCITY
 	if(Input.is_action_just_pressed(controls.jump) && can_roll): #you activate the roll mode with the interact button
 		_unroll_now()
+		Global.game_controller.play_sfx("Roll")
 		#Code to fix snapping issue on ball
 		#if(!active_roll):
 			#_unroll_now()
@@ -99,7 +101,14 @@ func _physics_process(delta: float) -> void:
 		else:
 			animationTree.set("parameters/Transition/transition_request", "Idle")
 			animationTree.set("parameters/TimeScale/scale", defaultAnimationScale)
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+			var platform_velocity
+			if(platform_raycast.is_colliding() and !platform_raycast.get_collider() is TileMapLayer and !platform_raycast.get_collider() is RigidBody2D and !platform_raycast.get_collider() is StaticBody2D):
+				platform_velocity = platform_raycast.get_collider().velocity
+			else:
+				platform_velocity = Vector2(0,0)
+			if(platform_velocity != Vector2(0,0)):
+				velocity.y = move_toward(velocity.y, 0, SPEED + platform_velocity.y)
+			velocity.x = move_toward(velocity.x, 0, SPEED + platform_velocity.x)
 	else: #if it isnt, then you check for some raycast so it doesnt move while on the air and just apply force to the ball
 		get_parent().get_node("Ball_collision").get_node("floor_raycast").global_rotation =0.0
 		get_parent().get_node("Ball_collision").get_node("floor_raycast2").global_rotation =0.0
@@ -119,13 +128,14 @@ func _unroll_now():
 
 func _complete_unroll():
 	if(!active_roll):
+		Global.game_controller.play_sfx("Unroll")
 		_unroll_now()
 
 func _on_j_area_area_entered(area: Area2D) -> void:
 	var parent= area.get_parent()
 	if parent.name == "p2_player_body":
 		Global.game_controller.play_sfx("jump")
-		velocity.y = JUMP_VELOCITY * 1.5
+		velocity.y = -900
 
 func _on_stopping_area_entered(area: Area2D) -> void:
 	if(area.get_parent().name == "p1_player_body"):

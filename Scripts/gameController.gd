@@ -9,6 +9,9 @@ const mainmenu_path = "res://GUI/Main_menu.tscn"
 @onready var SFX_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var menu_stream_player_2d_2: AudioStreamPlayer2D = $MenuStreamPlayer2D2
 const JUMP_SOUND = preload("res://Music and sounds/JumpSound.mp3")
+const UNROLL = preload("res://Music and sounds/Unroll.mp3")
+const BUTTON_CLICK___SOUND_EFFECT = preload("res://Music and sounds/Button Click - Sound Effect.mp3")
+const ROLL = preload("res://Music and sounds/Roll.mp3")
 var first_player_ready:bool
 var current_2d_scene:Node2D
 var path_current_2d_scene:String
@@ -28,6 +31,15 @@ func play_sfx(sfx:String)-> void:
 		"jump":
 			SFX_stream_player.stream = JUMP_SOUND
 			SFX_stream_player.play()
+		"Roll":
+			SFX_stream_player.stream = ROLL
+			SFX_stream_player.play()
+		"Unroll":
+			SFX_stream_player.stream = UNROLL
+			SFX_stream_player.play()
+		"Click":
+			SFX_stream_player.stream = BUTTON_CLICK___SOUND_EFFECT
+			SFX_stream_player.play(0.2)
 
 func pause():
 	Global.game_controller.paused = true
@@ -48,6 +60,8 @@ func change_gui_scene(new_scene:String, delete:bool = true, keep_running:bool=fa
 		else:
 			gui.remove_child(current_gui_scene)
 	var new:Control = load(new_scene).instantiate()
+	if(new_scene == "res://GUI/options_menu.tscn"):
+		new.previous_route = current_gui_scene.scene_file_path
 	gui.add_child(new)
 	if current_gui_scene:
 		new.set_meta("previous", current_gui_scene.scene_file_path)
@@ -100,7 +114,9 @@ func startGameMusic():
 	if(!audio_stream_player_2d.playing):
 		menu_stream_player_2d_2.playing = false
 		audio_stream_player_2d.playing = true
+
 func move_music():
 	audio_stream_player_2d.position.y -=1400
 	SFX_stream_player.position.y -=1400
 	menu_stream_player_2d_2.position.y -=1400
+	

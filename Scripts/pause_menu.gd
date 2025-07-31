@@ -14,12 +14,13 @@ func _process(delta: float) -> void:
 func _on_Exit_2_Menu_pressed() -> void:
 	Global.game_controller.change_2d_scene("res://Level/mainMenuBG.tscn")
 	Global.game_controller.change_gui_scene("res://GUI/Main_menu.tscn")
+	Global.game_controller.play_sfx("Click")
 
 func _on_options_pressed() -> void:
-	Global.game_controller.change_gui_scene("res://GUI/Admin.tscn")
-
-
+	Global.game_controller.change_gui_scene("res://GUI/options_menu.tscn")
+	Global.game_controller.play_sfx("Click")
 
 func _on_Continue_pressed() -> void:
 	Global.game_controller.change_gui_scene("res://GUI/InGameUI.tscn")
 	Global.game_controller.unpause()
+	Global.game_controller.play_sfx("Click")

@@ -9,7 +9,7 @@ size = Vector2(124, 242)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbkpt"]
 size = Vector2(126, 248)
 
-[node name="DaWall" type="CharacterBody2D"]
+[node name="DaWall" type="CharacterBody2D" groups=["Moving_wall"]]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_cbkpt")
